@@ -1,5 +1,7 @@
 module.exports = {
   plugins: [
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -35,7 +37,12 @@ module.exports = {
         ],
       },
     },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-plugin-google-fonts",
+      options: {
+        fonts: ["roboto"],
+        display: "swap",
+      },
+    },
   ],
 }
