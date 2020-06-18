@@ -40,7 +40,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-google-fonts",
       options: {
-        fonts: ["roboto", "fira code"],
+        // prettier-ignore
+        fonts: ["roboto\:400,700", "fira code"],
         display: "swap",
       },
     },

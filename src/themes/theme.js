@@ -1,7 +1,7 @@
 export default {
   fonts: {
-    main: "roboto",
-    code: "fira code",
+    main: "roboto,sans-serif",
+    code: "fira code,monospace",
   },
   colors: {
     light: "white",
