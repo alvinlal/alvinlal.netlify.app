@@ -1,10 +1,12 @@
 import React from "react"
 import { Layout } from "../components"
 
-export default function Index() {
+const Blog = () => {
   return (
     <Layout>
-      <div>Hello</div>
+      <h1>Hello world</h1>
     </Layout>
   )
 }
+
+export default Blog
