@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
 const useDarkMode = () => {
-  const [theme, setTheme] = useState("light")
+  const [theme, setTheme] = useState("dark")
   const [componentMounted, setComponentMounted] = useState(false)
 
   const setMode = mode => {
@@ -24,7 +24,7 @@ const useDarkMode = () => {
       ? setMode("dark")
       : localTheme
       ? setTheme(localTheme)
-      : setMode("light")
+      : setMode("dark")
     setComponentMounted(true)
   }, [])
 

@@ -1,3 +1,4 @@
 export * from "./layoutElement"
-export * from "./headerElement"
+export * from "./headerElements"
 export * from "./footerElement"
+export * from "./darkModeTogglerElement"

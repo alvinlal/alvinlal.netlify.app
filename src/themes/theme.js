@@ -9,8 +9,7 @@ export const Theme = {
     large: "3rem",
   },
   breakpoints: {
-    mobile: "only screen and (max-width:50rem)",
-    tablet: "only screen and (max-width:65rem)",
+    mobile: "750px",
   },
   spacings: {
     xxSmall: ".25rem",
