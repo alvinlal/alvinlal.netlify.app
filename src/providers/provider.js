@@ -36,6 +36,7 @@ const Provider = ({ children }) => {
     <ThemeProvider theme={themeMode}>
       <ThemeContext.Provider
         value={{
+          theme,
           changeTheme: () => toggleTheme(),
         }}
       >
