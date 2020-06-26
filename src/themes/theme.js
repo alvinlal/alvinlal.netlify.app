@@ -11,20 +11,6 @@ export const Theme = {
   breakpoints: {
     mobile: "750px",
   },
-  spacings: {
-    xxSmall: ".25rem",
-    xSmall: ".5rem",
-    small: "1rem",
-    medium: "2rem",
-    large: "3rem",
-  },
-  animations: {
-    buttons: "box-shadow 0.3s ease",
-    link: "color 0.2s ease",
-  },
-  shadows: {
-    shadow1: "0px 5px 20px rgba(30,30,31,0.05)",
-  },
 }
 export const darkTheme = {
   text: "white",
@@ -32,14 +18,18 @@ export const darkTheme = {
   background: "#01142A",
   border: "#7A8BE6",
   gradient: "linear-gradient(#091236, #1E215D)",
-  darkTheme: true, //for the dark mode toggler
+  darkTheme: true,
+  shadow: "-6px 6px 3px rgba(122, 139, 230, 0.2)",
+  hoverShadow: "-12px 12px 6px rgba(122, 139, 230, 0.2)",
 }
 
 export const lightTheme = {
   text: "#1D1A1A",
-  headings: "#022A58",
+  headings: "#0077AC",
   background: "white",
-  border: "#022A58",
+  border: "#0077AC",
   gradient: "linear-gradient(#39598A, #79D7ED)",
-  lightTheme: true, //for the dark mode toggler
+  lightTheme: true,
+  shadow: "-6px 6px 3px rgba(41, 42, 46, 0.2)",
+  hoverShadow: "-12px 12px 6px rgba(0, 0, 0, 0.2)",
 }

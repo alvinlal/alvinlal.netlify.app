@@ -1,40 +1,27 @@
-// module.exports = async ({ actions, graphql }) => {
-//   // Create paginated allPosts page
-//   const { data } = await graphql`
+// exports.createPages = async ({ actions, graphql, reporter }) => {
+//   const result = await graphql(`
 //     query {
-//       allMdx(sort: { order: DESC, fields: frontmatter___date }) {
-//         edges {
-//           node {
-//             frontmatter {
-//               slug
-//             }
-//             id
+//       allMdx {
+//         nodes {
+//           frontmatter {
+//             slug
 //           }
 //         }
 //       }
 //     }
-//   `
-//   const postPerPage = 3
-//   const numOfPage = Math.ceil(data.allMdx.edges.length / postPerPage)
+//   `)
+//   if (result.errors) {
+//     reporter.panic("failed to create posts", result.errors)
+//   }
+//   const posts = result.data.allMdx.nodes
 
-//   Array.from({ length: numOfPage }).forEach((_, i) => {
-//     actions.createPages({
-//       path: i == 0 ? "/blog" : `${i + 1}`,
-//       component: require.resolve("./src/components/AllPosts.js"),
-//       context: {
-//         limit: postPerPage,
-//         skip: i * postPerPage,
-//         numOfPage,
-//         currentPage: i + 1,
-//       },
-//     })
-//   })
-//   // Create Pages for individual posts.
-//   data.allMdx.edges.forEach(post => {
-//     actions.createPages({
+//   posts.forEach(post => {
+//     actions.createPage({
 //       path: post.frontmatter.slug,
-//       component: require.resolve("./src/components/Post.js"),
-//       context: { id },
+//       component: require.resolve("./src/templates/post.js"),
+//       context: {
+//         slug: post.frontmatter.slug,
+//       },
 //     })
 //   })
 // }

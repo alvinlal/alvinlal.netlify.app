@@ -1,7 +1,13 @@
 module.exports = {
+  siteMetadata: {
+    title: "Alvin lal",
+    description:
+      "personal portfolio of alvin lal and a blog for everything about web development",
+  },
   plugins: [
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -21,6 +27,13 @@ module.exports = {
       options: {
         name: "images",
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "postFeatureimages",
+        path: `${__dirname}/src/posts`,
       },
     },
     {

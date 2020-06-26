@@ -1,7 +1,7 @@
 import React from "react"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { Theme as mainTheme, darkTheme, lightTheme } from "../themes/theme"
-import useDarkMode from "../hooks/useDarkMode"
+import { useDarkMode } from "../hooks"
 
 export const ThemeContext = React.createContext()
 const GlobalStyles = createGlobalStyle`

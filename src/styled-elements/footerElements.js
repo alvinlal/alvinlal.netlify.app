@@ -1,11 +1,8 @@
 import styled from "styled-components"
 
-export const FooterWrapper = styled.div`
-  height: 50px;
+export const FooterWrapper = styled.footer`
+  height: 80px;
   border-top: ${({ theme }) => `3px solid ${theme.border}`};
-  position: fixed;
-  left: 0;
-  bottom: 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -23,7 +20,7 @@ export const SocialIconsWrapper = styled.div`
   img {
     height: 32px;
     width: 32px;
-    margin: 10px;
+    margin: 0px 10px;
     transition: all 0.5s ease;
   }
   img:hover {
