@@ -9,7 +9,7 @@ export const Theme = {
     large: "3rem",
   },
   breakpoints: {
-    mobile: "750px",
+    mobile: "800px",
   },
 }
 export const darkTheme = {

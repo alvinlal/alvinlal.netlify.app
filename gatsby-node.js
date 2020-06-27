@@ -17,7 +17,7 @@
 
 //   posts.forEach(post => {
 //     actions.createPage({
-//       path: post.frontmatter.slug,
+//       path: 'blog/${post.frontmatter.slug}',
 //       component: require.resolve("./src/templates/post.js"),
 //       context: {
 //         slug: post.frontmatter.slug,

@@ -13,6 +13,7 @@ export const SearchBlogWrapper = styled.div`
 
   input {
     border: none;
+    width: 230px;
     height: 20px;
     font-size: 1.1rem;
     color: ${({ theme }) => theme.text};

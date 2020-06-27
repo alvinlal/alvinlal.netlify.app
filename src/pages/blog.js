@@ -12,6 +12,7 @@ const Blog = () => {
   const [searchWord, setSearchWord] = useState("")
   const searchRegex = new RegExp("\\b" + searchWord.toLowerCase() + "\\b")
 
+  var flag = 0
   const handleSearch = e => {
     setSearchWord(e.target.value)
   }
@@ -21,10 +22,11 @@ const Blog = () => {
         return <PostPreview key={post.id} info={post} />
       })
     } else if (searchWord) {
-      var flag = 0
+      flag = 0
       return posts.map((post, index) => {
         if (searchRegex.test(post.title.toLowerCase())) {
           flag++
+
           return <PostPreview key={post.id} info={post} />
         }
         if (index + 1 === posts.length && flag === 0) {
@@ -38,7 +40,9 @@ const Blog = () => {
     <Layout>
       <AllBlogsWrapper>
         <SearchBlog handleSearch={handleSearch} />
-        <PostCountWrapper>{posts.length} posts</PostCountWrapper>
+        <PostCountWrapper>
+          {!searchWord && `${posts.length} posts`}{" "}
+        </PostCountWrapper>
         {showPosts()}
       </AllBlogsWrapper>
     </Layout>

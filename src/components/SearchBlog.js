@@ -13,7 +13,8 @@ export const SearchBlog = ({ handleSearch }) => {
   return (
     <SearchBlogWrapper>
       <img src={data.searchLight.publicURL} alt="search icon" />
-      <input type="text" placeholder="Search" onChange={handleSearch} />
+      {/* eslint-disable-next-line*/}
+      <input type="text" placeholder="Search" onChange={handleSearch} />{" "}
     </SearchBlogWrapper>
   )
 }
