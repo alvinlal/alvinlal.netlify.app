@@ -1,29 +1,55 @@
-import React from "react"
-import { Layout, PostPreview } from "../components"
+import React, { useState } from "react"
+import { Layout, PostPreview, SearchBlog } from "../components"
+import {
+  AllBlogsWrapper,
+  NoResultsWrapper,
+  PostCountWrapper,
+} from "../styled-elements"
 import { usePosts } from "../hooks"
-import styled from "styled-components"
-
-const AllBlogsWrapper = styled.div`
-  height: auto;
-  /* width: auto; */
-  width: 900px;
-  margin: 10px auto;
-  display: flex;
-  flex-direction: column;
-`
 
 const Blog = () => {
   const posts = usePosts()
-  console.log(posts)
+  const [searchWord, setSearchWord] = useState("")
+  const searchRegex = new RegExp("\\b" + searchWord.toLowerCase() + "\\b")
+
+  const handleSearch = e => {
+    setSearchWord(e.target.value)
+  }
+  const showPosts = () => {
+    if (!searchWord) {
+      return posts.map(post => {
+        return <PostPreview key={post.id} info={post} />
+      })
+    } else if (searchWord) {
+      var flag = 0
+      return posts.map((post, index) => {
+        if (searchRegex.test(post.title.toLowerCase())) {
+          flag++
+          return <PostPreview key={post.id} info={post} />
+        }
+        if (index + 1 === posts.length && flag === 0) {
+          return <NoResultsWrapper>No results found</NoResultsWrapper>
+        }
+        return null
+      })
+    }
+  }
   return (
     <Layout>
       <AllBlogsWrapper>
-        {posts.map(post => (
-          <PostPreview info={post} key={post.id} />
-        ))}
+        <SearchBlog handleSearch={handleSearch} />
+        <PostCountWrapper>{posts.length} posts</PostCountWrapper>
+        {showPosts()}
       </AllBlogsWrapper>
     </Layout>
   )
 }
 
 export default Blog
+// return posts.map(post => {
+//   return (
+//     searchRegex.test(post.title.toLowerCase()) && (
+//       <PostPreview key={post.id} info={post} />
+//     )
+//   )
+// })

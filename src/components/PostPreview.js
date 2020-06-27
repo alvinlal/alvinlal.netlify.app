@@ -45,7 +45,7 @@ export const PostPreview = ({ info }) => {
     }
   `)
 
-  const { id, date, title, slug, excerpt, image, timeToRead } = info
+  const { date, title, slug, excerpt, image, timeToRead } = info
 
   const source = [
     data.mobileImage.childImageSharp.fixed,
