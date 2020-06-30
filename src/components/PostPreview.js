@@ -54,12 +54,12 @@ export const PostPreview = ({ info }) => {
   ]
   return (
     <Link
-      to={`/${slug}`}
+      to={`/blog/${slug}`}
       style={{ appearance: "none", textDecoration: "none" }}
     >
       <PostPreviewWrapper>
         <FeatureImageWrapper className={"featureImage"}>
-          <Image fixed={source} fadeIn={true} />
+          <Image fixed={source} fadeIn={true} alt="feature image" />
         </FeatureImageWrapper>
         <InfoWrapper>
           <TitleWrapper>{title}</TitleWrapper>

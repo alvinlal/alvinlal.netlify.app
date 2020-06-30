@@ -21,6 +21,7 @@ export const darkTheme = {
   darkTheme: true,
   shadow: "-6px 6px 3px rgba(122, 139, 230, 0.2)",
   hoverShadow: "-12px 12px 6px rgba(122, 139, 230, 0.2)",
+  codeBackground: "#0f194a",
 }
 
 export const lightTheme = {
@@ -32,4 +33,5 @@ export const lightTheme = {
   lightTheme: true,
   shadow: "-6px 6px 3px rgba(41, 42, 46, 0.2)",
   hoverShadow: "-12px 12px 6px rgba(0, 0, 0, 0.2)",
+  codeBackground: "#f3f3f3",
 }

@@ -73,6 +73,7 @@ export const DateWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: ${({ theme }) => theme.text};
   img {
     height: 18px;
     width: 18px;

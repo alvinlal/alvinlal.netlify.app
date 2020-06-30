@@ -2,6 +2,8 @@ import React from "react"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { Theme as mainTheme, darkTheme, lightTheme } from "../themes/theme"
 import { useDarkMode } from "../hooks"
+import { MDXProvider } from "@mdx-js/react"
+import { Table, Code } from "../components"
 
 export const ThemeContext = React.createContext()
 const GlobalStyles = createGlobalStyle`
@@ -22,6 +24,7 @@ background-color:${props => props.theme.background};
 
 
 `
+
 const Provider = ({ children }) => {
   const [theme, toggleTheme, componentMounted] = useDarkMode()
   const themeMode =
@@ -32,18 +35,24 @@ const Provider = ({ children }) => {
   if (!componentMounted) {
     return <div />
   }
+  const components = {
+    table: Table,
+    pre: Code,
+  }
   return (
-    <ThemeProvider theme={themeMode}>
-      <ThemeContext.Provider
-        value={{
-          theme,
-          changeTheme: () => toggleTheme(),
-        }}
-      >
-        <GlobalStyles />
-        {children}
-      </ThemeContext.Provider>
-    </ThemeProvider>
+    <MDXProvider components={components}>
+      <ThemeProvider theme={themeMode}>
+        <ThemeContext.Provider
+          value={{
+            theme,
+            changeTheme: () => toggleTheme(),
+          }}
+        >
+          <GlobalStyles />
+          {children}
+        </ThemeContext.Provider>
+      </ThemeProvider>
+    </MDXProvider>
   )
 }
 export default ({ element }) => <Provider>{element}</Provider>
