@@ -18,9 +18,9 @@ export const Code = props => {
   const className = props.children.props.className || ""
   const matches = className.match(/language-(?<lang>.*)/)
   const handleCopy = () => {
+    window.navigator.clipboard.writeText(props.children.props.children.trim())
     setCopyState("Copied!")
     setTimeout(() => {
-      window.navigator.clipboard.writeText(props.children.props.children.trim())
       setCopyState("Copy")
     }, 2000)
   }

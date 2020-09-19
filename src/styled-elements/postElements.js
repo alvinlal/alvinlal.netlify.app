@@ -6,6 +6,9 @@ export const PostWrapper = styled.main`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 90%;
+  }
 `
 
 export const PostHeaderWrapper = styled.div`
@@ -19,6 +22,11 @@ export const PostHeaderWrapper = styled.div`
     font-size: 3rem;
   }
   border-bottom: ${({ theme }) => `2px solid ${theme.border}`};
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
 `
 export const PostbodyWrapper = styled.div`
   color: ${({ theme }) => theme.text};
@@ -112,10 +120,29 @@ export const PostbodyWrapper = styled.div`
   table {
     margin: auto;
   }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 100%;
+    h1 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+    pre {
+      font-size: 1rem;
+    }
+    td,
+    th {
+      font-size: 1rem;
+    }
+  }
 `
 export const TableWrapper = styled.div`
   margin: 2rem;
   overflow-x: auto;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    margin: 10px 5px;
+  }
 `
 
 export const PreWrapper = styled.pre`
@@ -171,6 +198,9 @@ export const EditOnGithubWrapper = styled.a`
     width: 32px;
     margin-right: 5px;
   }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 1.2rem;
+  }
 `
 
 export const PageNavWrapper = styled.div`
@@ -190,5 +220,9 @@ export const PageNavWrapper = styled.div`
     border: ${({ theme }) => `2px solid ${theme.border}`};
     padding: 10px;
     margin: 20px auto;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 100%;
+    font-size: 1rem;
   }
 `
