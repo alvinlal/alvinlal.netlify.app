@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { Layout } from "../components"
+import { Layout, Seo } from "../components"
 import { ThemeContext } from "../providers/provider"
 import {
   PostWrapper,
@@ -29,9 +29,16 @@ const months = [
 const Post = ({ data, pageContext }) => {
   const { theme } = React.useContext(ThemeContext)
   const { date, title, timeToRead } = data.mdx.frontmatter
+  const seoImage = data.mdx.frontmatter.featureImage.publicURL
 
   return (
     <Layout>
+      <Seo
+        title={data.mdx.frontmatter.title}
+        image={seoImage}
+        description={data.mdx.frontmatter.excerpt}
+        keywords={data.mdx.frontmatter.title.split(" ")}
+      />
       <PostWrapper>
         <PostHeaderWrapper>
           <h1>{title}</h1>
@@ -98,7 +105,9 @@ export const postQuery = graphql`
         title
         date
         timeToRead
+        excerpt
         featureImage {
+          publicURL
           childImageSharp {
             fixed {
               ...GatsbyImageSharpFixed_tracedSVG

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Layout, PostPreview, SearchBlog } from "../components"
+import { Layout, PostPreview, SearchBlog, Seo } from "../components"
 import {
   AllBlogsWrapper,
   NoResultsWrapper,
@@ -38,6 +38,7 @@ const Blog = () => {
   }
   return (
     <Layout>
+      <Seo />
       <AllBlogsWrapper>
         <SearchBlog handleSearch={handleSearch} />
         <PostCountWrapper>

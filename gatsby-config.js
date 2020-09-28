@@ -1,8 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: "Alvin lal",
+    image: "./al.png",
     description:
       "personal portfolio of alvin lal and a blog for everything about web development",
+    twitterUsername: "@alvinlal7",
+    author: "Alvin lal",
+    url: "https://www.alvinlal.com",
   },
   plugins: [
     "gatsby-plugin-sharp",
