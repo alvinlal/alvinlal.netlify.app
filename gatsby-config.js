@@ -6,7 +6,7 @@ module.exports = {
       "personal portfolio of alvin lal and a blog for everything about web development",
     twitterUsername: "@alvinlal7",
     author: "Alvin lal",
-    url: "https://www.alvinlal.com",
+    url: "https://alvinlal.github.io",
   },
   plugins: [
     "gatsby-plugin-sharp",
