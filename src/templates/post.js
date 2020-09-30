@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Layout, Seo } from "../components"
 import { ThemeContext } from "../providers/provider"
+import { Disqus } from "gatsby-plugin-disqus"
 import {
   PostWrapper,
   PostHeaderWrapper,
@@ -11,6 +12,7 @@ import {
   PostbodyWrapper,
   EditOnGithubWrapper,
   PageNavWrapper,
+  DisqusWrapper,
 } from "../styled-elements"
 const months = [
   "January",
@@ -28,9 +30,13 @@ const months = [
 ]
 const Post = ({ data, pageContext }) => {
   const { theme } = React.useContext(ThemeContext)
-  const { date, title, timeToRead } = data.mdx.frontmatter
+  const { date, title, timeToRead, slug, id } = data.mdx.frontmatter
   const seoImage = data.mdx.frontmatter.featureImage.publicURL
-
+  const disqusConfig = {
+    url: `https://alvinlal.netlify.app/blog/${slug}`,
+    identifier: id,
+    title: title,
+  }
   return (
     <Layout>
       <Seo
@@ -91,6 +97,9 @@ const Post = ({ data, pageContext }) => {
           )}
         </PageNavWrapper>
       </PostWrapper>
+      <DisqusWrapper>
+        <Disqus config={disqusConfig} />
+      </DisqusWrapper>
     </Layout>
   )
 }
@@ -101,8 +110,10 @@ export const postQuery = graphql`
   query postQuery($id: String!) {
     mdx(id: { eq: $id }) {
       body
+      id
       frontmatter {
         title
+        slug
         date
         timeToRead
         excerpt

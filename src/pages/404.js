@@ -6,7 +6,7 @@ const notFound = () => {
   return (
     <Layout>
       <FourOfourWrapper>
-        <h1>404 not found</h1>
+        <div style={{ margin: "auto" }}>404 NOT FOUND </div>
       </FourOfourWrapper>
     </Layout>
   )

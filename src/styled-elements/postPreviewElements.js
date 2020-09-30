@@ -101,3 +101,11 @@ export const ExcerptWrapper = styled.div`
     font-size: 1rem;
   }
 `
+export const DisqusWrapper = styled.div`
+  width: 80%;
+  margin: 10px auto;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 95%;
+  }
+`

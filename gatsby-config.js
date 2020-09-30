@@ -6,12 +6,24 @@ module.exports = {
       "personal portfolio of alvin lal and a blog for everything about web development",
     twitterUsername: "@alvinlal7",
     author: "Alvin lal",
-    url: "https://alvinlal.github.io",
+    url: "https://alvinlal.netlify.app",
   },
   plugins: [
     "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    {
+      resolve: `gatsby-transformer-sharp`,
+      options: {
+        // The option defaults to true
+        checkSupportedExtensions: false,
+      },
+    },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `alvinlal`,
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {

@@ -51,10 +51,3 @@ const Blog = () => {
 }
 
 export default Blog
-// return posts.map(post => {
-//   return (
-//     searchRegex.test(post.title.toLowerCase()) && (
-//       <PostPreview key={post.id} info={post} />
-//     )
-//   )
-// })

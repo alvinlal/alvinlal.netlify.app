@@ -31,8 +31,12 @@ export const PostPreview = ({ info }) => {
   const { theme } = React.useContext(ThemeContext)
   const data = useStaticQuery(graphql`
     {
-      mobileImage: file(relativePath: { eq: "useless.svg" }) {
-        publicURL
+      mobileImage: file(relativePath: { eq: "useless.png" }) {
+        childImageSharp {
+          fixed(width: 1, height: 1) {
+            ...GatsbyImageSharpFixed
+          }
+        }
       }
       clockIconLight: file(relativePath: { eq: "clock-light.svg" }) {
         publicURL
@@ -43,10 +47,10 @@ export const PostPreview = ({ info }) => {
     }
   `)
 
-  const { date, title, slug, excerpt, image, timeToRead } = info
+  const { id, date, title, slug, excerpt, image, timeToRead } = info
 
   const source = [
-    data.mobileImage.publicURL,
+    data.mobileImage.childImageSharp.fixed,
     {
       ...image,
       media: `(min-width:800px)`,
@@ -59,7 +63,7 @@ export const PostPreview = ({ info }) => {
     >
       <PostPreviewWrapper>
         <FeatureImageWrapper className={"featureImage"}>
-          <Image fixed={source} fadeIn={true} alt="feature image" />
+          <Image key={id} fixed={source} fadeIn={true} alt="feature image" />
         </FeatureImageWrapper>
         <InfoWrapper>
           <TitleWrapper>{title}</TitleWrapper>

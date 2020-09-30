@@ -2,7 +2,7 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
 
-export const Seo = ({ description, keywords, title, image, url, author }) => {
+export const Seo = ({ description, keywords, title, image, url }) => {
   return (
     <StaticQuery
       query={detailsQuery}
@@ -10,9 +10,8 @@ export const Seo = ({ description, keywords, title, image, url, author }) => {
         const metaDescription =
           description || data.site.siteMetadata.description
         const metaTitle = title || data.site.siteMetadata.title
-        // const metaAuthor = author || data.site.siteMetadata.author
         const metaUrl = url || data.site.siteMetadata.url
-        const metaImage = image || data.site.siteMetadata.url
+        const metaImage = image || data.site.siteMetadata.image
         const metakeywords = keywords
         return (
           <Helmet
@@ -57,9 +56,23 @@ export const Seo = ({ description, keywords, title, image, url, author }) => {
             ].concat(
               metakeywords && metakeywords.length > 0
                 ? { name: `keywords`, content: metakeywords.join(`,`) }
-                : [
-                    "react,javascript,typescript,web,fullstack,frontend,backend,nodejs,express,ssr,alvinlal,blog",
-                  ]
+                : {
+                    name: "keywords",
+                    content: [
+                      "react",
+                      "javascript",
+                      "typescript",
+                      "web",
+                      "fullstack",
+                      "frontend",
+                      "backend",
+                      "nodejs",
+                      "express",
+                      "ssr",
+                      "alvinlal",
+                      "blog",
+                    ],
+                  }
             )}
           />
         )
