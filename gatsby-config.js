@@ -1,3 +1,11 @@
+const {
+  NODE_ENV,
+  URL: NETLIFY_SITE_URL = "https://alvinlal.netlify.app",
+  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
+  CONTEXT: NETLIFY_ENV = NODE_ENV,
+} = process.env
+const isNetlifyProduction = NETLIFY_ENV === "production"
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
 module.exports = {
   siteMetadata: {
     title: "Alvin lal",
@@ -6,10 +14,68 @@ module.exports = {
       "personal portfolio of alvin lal and a blog for everything about web development",
     twitterUsername: "@alvinlal7",
     author: "Alvin lal",
-    url: "https://alvinlal.netlify.app",
+    siteUrl: siteUrl,
   },
   plugins: [
     "gatsby-plugin-sharp",
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+            mdx {
+              frontmatter {
+                date
+              }
+            }
+          
+        }`,
+
+        serialize: ({ site, allSitePage, mdx }) =>
+          allSitePage.edges.map(edge => {
+            return {
+              url: site.siteMetadata.siteUrl + edge.node.path,
+              priority:
+                edge.node.path === "https://alvinlal.netlify.app/blog/"
+                  ? 1
+                  : 0.5,
+            }
+          }),
+      },
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        resolveEnv: () => NETLIFY_ENV,
+        env: {
+          production: {
+            policy: [{ userAgent: "*" }],
+          },
+          "branch-deploy": {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
+            sitemap: null,
+            host: null,
+          },
+          "deploy-preview": {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
+            sitemap: null,
+            host: null,
+          },
+        },
+      },
+    },
     {
       resolve: `gatsby-transformer-sharp`,
       options: {

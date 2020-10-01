@@ -1,14 +1,15 @@
 import React from "react"
 import { Layout, Seo } from "../components"
+import config from "react-reveal/globals"
 
-//TODO:- Add disqus
-//       Add robots.txt
-//       Add sitemap
+config({ ssrFadeout: true })
+//TODO:-
+
 //       Add schema markup https://www.youtube.com/watch?v=BIQGBKXc6AI
-//       Add pagination for blog page
+//       Add pagination for blog page // use react reveal for now // use pagination when no of posts get big
 //       Add social share buttons
 //       Add view counts
-//       Add not found to center
+//       Add manifest
 export default function Index() {
   return (
     <Layout>

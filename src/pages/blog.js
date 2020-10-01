@@ -5,6 +5,7 @@ import {
   NoResultsWrapper,
   PostCountWrapper,
 } from "../styled-elements"
+import Zoom from "react-reveal/Zoom"
 import { usePosts } from "../hooks"
 
 const Blog = () => {
@@ -19,7 +20,11 @@ const Blog = () => {
   const showPosts = () => {
     if (!searchWord) {
       return posts.map(post => {
-        return <PostPreview key={post.id} info={post} />
+        return (
+          <Zoom key={post.id}>
+            <PostPreview key={post.id} info={post} />
+          </Zoom>
+        )
       })
     } else if (searchWord) {
       flag = 0
@@ -38,7 +43,7 @@ const Blog = () => {
   }
   return (
     <Layout>
-      <Seo />
+      <Seo title={"All blogs"} />
       <AllBlogsWrapper>
         <SearchBlog handleSearch={handleSearch} />
         <PostCountWrapper>
