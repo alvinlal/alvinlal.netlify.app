@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { Layout, Seo } from "../components"
+import { Layout, Seo, ViewCounter } from "../components"
 import { ThemeContext } from "../providers/provider"
 import { Disqus } from "gatsby-plugin-disqus"
 import {
@@ -32,6 +32,8 @@ const Post = ({ data, pageContext }) => {
   const { theme } = React.useContext(ThemeContext)
   const { date, title, timeToRead, slug, id } = data.mdx.frontmatter
   const seoImage = data.mdx.frontmatter.featureImage.publicURL
+  const siteUrl = data.site.siteMetadata.siteUrl
+
   const disqusConfig = {
     url: `https://alvinlal.netlify.app/blog/${slug}`,
     identifier: id,
@@ -64,6 +66,7 @@ const Post = ({ data, pageContext }) => {
               )}
               {timeToRead + " Read"}
             </TimeToReadWrapper>
+            <ViewCounter postUrl={`${siteUrl}/blog/${slug}`} title={title} />
           </DateWrapper>
         </PostHeaderWrapper>
         <PostbodyWrapper>
@@ -125,6 +128,11 @@ export const postQuery = graphql`
             }
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
     clockIconLight: file(relativePath: { eq: "clock-light.svg" }) {

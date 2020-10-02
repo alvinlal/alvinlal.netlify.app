@@ -101,6 +101,21 @@ export const ExcerptWrapper = styled.div`
     font-size: 1rem;
   }
 `
+
+export const ViewCountWrapper = styled.div`
+  margin-left: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    height: 30px;
+    width: 30px;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    margin-left: 0px;
+  }
+`
+
 export const DisqusWrapper = styled.div`
   width: 80%;
   margin: 10px auto;
