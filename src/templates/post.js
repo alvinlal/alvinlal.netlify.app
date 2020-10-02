@@ -30,9 +30,51 @@ const months = [
 ]
 const Post = ({ data, pageContext }) => {
   const { theme } = React.useContext(ThemeContext)
-  const { date, title, timeToRead, slug, id } = data.mdx.frontmatter
+  const {
+    date,
+    title,
+    timeToRead,
+    slug,
+    id,
+    lastmod,
+    excerpt,
+  } = data.mdx.frontmatter
   const seoImage = data.mdx.frontmatter.featureImage.publicURL
-  const siteUrl = data.site.siteMetadata.siteUrl
+  const siteUrl = data.site.siteMetadata.siteUrl + `/blog/${slug}`
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": siteUrl,
+    },
+    headline: title,
+    description: excerpt,
+    image: {
+      "@type": "ImageObject",
+      url: data.site.siteMetadata.siteUrl + seoImage,
+    },
+    author: {
+      "@type": "Person",
+      name: "Alvin lal",
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Alvin lal",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://alvinlal.netlify.app/logo.png",
+      },
+    },
+    datePublished:
+      date.split("-")[2] + "-" + date.split("-")[1] + "-" + date.split("-")[0],
+    dateModified:
+      lastmod.split("-")[0] +
+      "-" +
+      lastmod.split("-")[1] +
+      "-" +
+      lastmod.split("-")[2],
+  }
 
   const disqusConfig = {
     url: `https://alvinlal.netlify.app/blog/${slug}`,
@@ -43,9 +85,11 @@ const Post = ({ data, pageContext }) => {
     <Layout>
       <Seo
         title={data.mdx.frontmatter.title}
-        image={seoImage}
+        image={data.site.siteMetadata.siteUrl + seoImage}
         description={data.mdx.frontmatter.excerpt}
         keywords={data.mdx.frontmatter.title.split(" ")}
+        siteUrl={siteUrl}
+        schemaMarkup={schema}
       />
       <PostWrapper>
         <PostHeaderWrapper>
@@ -118,6 +162,7 @@ export const postQuery = graphql`
         title
         slug
         date
+        lastmod
         timeToRead
         excerpt
         featureImage {

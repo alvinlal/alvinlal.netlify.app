@@ -2,7 +2,14 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
 
-export const Seo = ({ description, keywords, title, image, siteUrl }) => {
+export const Seo = ({
+  description,
+  keywords,
+  title,
+  image,
+  siteUrl,
+  schemaMarkup,
+}) => {
   return (
     <StaticQuery
       query={detailsQuery}
@@ -11,7 +18,8 @@ export const Seo = ({ description, keywords, title, image, siteUrl }) => {
           description || data.site.siteMetadata.description
         const metaTitle = title || data.site.siteMetadata.title
         const metaUrl = siteUrl || data.site.siteMetadata.siteUrl
-        const metaImage = image || data.site.siteMetadata.image
+        const metaImage =
+          image || data.site.siteMetadata.siteUrl + data.site.siteMetadata.image
         const metaAuthor = data.site.siteMetadata.author
         const metakeywords = keywords
         return (
@@ -79,7 +87,13 @@ export const Seo = ({ description, keywords, title, image, siteUrl }) => {
                     ],
                   }
             )}
-          />
+          >
+            {schemaMarkup && (
+              <script type="application/ld+json">
+                {JSON.stringify(schemaMarkup)}
+              </script>
+            )}
+          </Helmet>
         )
       }}
     />

@@ -50,22 +50,15 @@ module.exports = {
                 }
               }
             }
-            mdx {
-              frontmatter {
-                date
-              }
-            }
+         
           
         }`,
 
-        serialize: ({ site, allSitePage, mdx }) =>
+        serialize: ({ site, allSitePage }) =>
           allSitePage.edges.map(edge => {
             return {
               url: site.siteMetadata.siteUrl + edge.node.path,
-              priority:
-                edge.node.path === "https://alvinlal.netlify.app/blog/"
-                  ? 1
-                  : 0.5,
+              priority: edge.node.path === "/blog/" ? 1 : 0.5,
             }
           }),
       },
@@ -75,8 +68,11 @@ module.exports = {
       options: {
         resolveEnv: () => NETLIFY_ENV,
         env: {
+          development: {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
+          },
           production: {
-            policy: [{ userAgent: "*" }],
+            policy: [{ userAgent: "*", allow: "/" }],
           },
           "branch-deploy": {
             policy: [{ userAgent: "*", disallow: ["/"] }],

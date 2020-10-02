@@ -3,16 +3,31 @@ import { Layout, Seo } from "../components"
 import config from "react-reveal/globals"
 
 config({ ssrFadeout: true })
-//TODO:-
 
-//       Add schema markup https://www.youtube.com/watch?v=BIQGBKXc6AI
-//       Add pagination for blog page // use react reveal for now // use pagination when no of posts get big
-//       Add view counts
-//       Add manifest
 export default function Index() {
+  const schema = {
+    "@context": "https://schema.org/",
+    "@type": "Person",
+    name: "Alvin lal",
+    url: "https://alvinlal.netlify.app",
+    description:
+      "personal portfolio of alvin lal and a blog for everything about web development",
+    image: "https://alvinlal.netlify.app/logo.png",
+    sameAs: [
+      "https://www.instagram.com/lal_alvin_7/",
+      "https://twitter.com/alvinlal7",
+      "https://www.linkedin.com/in/alvin-lal-146a841b8/",
+      "https://github.com/alvinlal",
+    ],
+    jobTitle: "student",
+  }
+
   return (
     <Layout>
-      <Seo title={"alvin lal's portfolio website and blog"} />
+      <Seo
+        title={"alvin lal's portfolio website and blog"}
+        schemaMarkup={schema}
+      />
       <div>Hello</div>
     </Layout>
   )
