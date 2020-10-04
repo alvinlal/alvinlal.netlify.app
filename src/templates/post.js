@@ -110,7 +110,7 @@ const Post = ({ data, pageContext }) => {
               )}
               {timeToRead + " Read"}
             </TimeToReadWrapper>
-            <ViewCounter postUrl={`${siteUrl}/blog/${slug}`} title={title} />
+            <ViewCounter postUrl={siteUrl} title={title} />
           </DateWrapper>
         </PostHeaderWrapper>
         <PostbodyWrapper>

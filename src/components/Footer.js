@@ -35,7 +35,7 @@ export const Footer = () => {
           />
         </a>
         <a
-          href="https://twitter.com/Alvinlal4"
+          href="https://twitter.com/alvinlal7"
           target="_blank"
           rel="noreferrer"
         >

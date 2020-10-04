@@ -127,6 +127,7 @@ export const PostbodyWrapper = styled.div`
     }
     p {
       font-size: 1rem;
+      line-height: 1.4rem;
     }
     pre {
       font-size: 1rem;

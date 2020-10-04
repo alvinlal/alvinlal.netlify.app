@@ -7,7 +7,9 @@ import {
 } from "../styled-elements"
 import Zoom from "react-reveal/Zoom"
 import { usePosts } from "../hooks"
+import config from "react-reveal/globals"
 
+config({ ssrFadeout: true })
 const Blog = () => {
   const posts = usePosts()
   const [searchWord, setSearchWord] = useState("")

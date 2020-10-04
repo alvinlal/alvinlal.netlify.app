@@ -94,7 +94,7 @@ export const SideNav = styled.div`
   z-index: 1;
   background-color: ${({ theme }) => theme.background};
   overflow-x: hidden;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   padding-top: 60px;
   border: 0px;
   @media (min-width: ${({ theme }) => theme.breakpoints.mobile}) {

@@ -10,7 +10,7 @@ const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
 module.exports = {
   siteMetadata: {
     title: "Alvin lal",
-    image: "./al.png",
+    image: "./static/logo.png",
     description:
       "personal portfolio of alvin lal and a blog for everything about web development",
     twitterUsername: "@alvinlal7",
@@ -19,6 +19,75 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-sharp",
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date:
+                    edge.node.frontmatter.date.split("-")[2] +
+                    "-" +
+                    edge.node.frontmatter.date.split("-")[1] +
+                    "-" +
+                    edge.node.frontmatter.date.split("-")[0],
+                  url:
+                    site.siteMetadata.siteUrl +
+                    "/blog/" +
+                    edge.node.frontmatter.slug,
+                  guid:
+                    site.siteMetadata.siteUrl +
+                    "/blog/" +
+                    edge.node.frontmatter.slug,
+                  custom_elements: [{ "content:encoded": edge.node.html }],
+                })
+              })
+            },
+            query: `
+            {
+              allMdx(sort: {order: DESC, fields: [frontmatter___date]}) {
+                edges {
+                  node {
+                    excerpt
+                    html
+                    frontmatter {
+                      title
+                      date
+                      slug
+                    }
+                  }
+                }
+              }
+            }
+            
+            `,
+            output: "/rss.xml",
+            title: "RSS Feed",
+          },
+        ],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint: process.env.MAILCHIMP_ENDPOINT,
+      },
+    },
     {
       resolve: "gatsby-plugin-firebase",
       options: {

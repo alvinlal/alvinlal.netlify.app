@@ -1,10 +1,62 @@
-import React from "react"
-import { Layout, Seo } from "../components"
-import config from "react-reveal/globals"
-
-config({ ssrFadeout: true })
+import React, { useState } from "react"
+import { Layout, PostPreviewMobile, Seo } from "../components"
+import {
+  IndexWrapper,
+  FullStackWrapper,
+  ReactWrapper,
+  NodeWrapper,
+  LogoWrapper,
+  TopPostWrapper,
+  PostsWrapper,
+  BlogLink,
+  NewsletterWrapper,
+  MailInputWrapper,
+} from "../styled-elements"
+import { useStaticQuery, graphql } from "gatsby"
+import Zoom from "react-reveal/Zoom"
+import addToMailchimp from "gatsby-plugin-mailchimp"
+//TODO:-
+// change react reveal animation to be from bottom up(i think it is fade)
 
 export default function Index() {
+  const [subscribeResult, setSubscribeResult] = useState("")
+  const [email, setEmail] = useState("")
+
+  const handleSubmit = async () => {
+    if (email.length === 0) {
+      return false
+    }
+    const result = await addToMailchimp(email)
+
+    setSubscribeResult(
+      result.msg
+        .slice(0, result.msg.indexOf("<"))
+        .replace("site newsletter", "")
+    )
+  }
+  const data = useStaticQuery(graphql`
+    {
+      reactLogo: file(relativePath: { eq: "react.png" }) {
+        publicURL
+      }
+      nodeLogo: file(relativePath: { eq: "node.png" }) {
+        publicURL
+      }
+      allMdx(sort: { fields: frontmatter___date, order: DESC }, limit: 4) {
+        nodes {
+          id
+          frontmatter {
+            title
+            lastmod
+            date
+            excerpt
+            slug
+            timeToRead
+          }
+        }
+      }
+    }
+  `)
   const schema = {
     "@context": "https://schema.org/",
     "@type": "Person",
@@ -28,7 +80,56 @@ export default function Index() {
         title={"alvin lal's portfolio website and blog"}
         schemaMarkup={schema}
       />
-      <div>Hello</div>
+      <IndexWrapper>
+        <FullStackWrapper>
+          <h1>
+            Full<span>Stack</span> Developer.
+          </h1>
+          <LogoWrapper>
+            <ReactWrapper>
+              <img src={data.reactLogo.publicURL} alt="react logo" />
+            </ReactWrapper>
+            <NodeWrapper>
+              <img src={data.nodeLogo.publicURL} alt="nodejs logo" />
+            </NodeWrapper>
+          </LogoWrapper>
+        </FullStackWrapper>
+        <TopPostWrapper>
+          <h1>Recent Posts</h1>
+          <PostsWrapper>
+            {data.allMdx.nodes.map(post => {
+              return (
+                <Zoom key={post.id}>
+                  <PostPreviewMobile
+                    key={post.id}
+                    info={{ id: post.id, ...post.frontmatter }}
+                  />
+                </Zoom>
+              )
+            })}
+          </PostsWrapper>
+          <BlogLink
+            to={`/blog`}
+            style={{ appearance: "none", textDecoration: "none" }}
+          >
+            See all &#8594;
+          </BlogLink>
+        </TopPostWrapper>
+
+        <NewsletterWrapper>
+          <h1>SUBSCRIBE TO NEWSLETTER</h1>
+
+          <MailInputWrapper>
+            <input
+              type="text"
+              placeholder="Email"
+              onChange={e => setEmail(e.target.value)}
+            />
+            <button onClick={handleSubmit}>SUBSCRIBE</button>
+          </MailInputWrapper>
+          {subscribeResult && <p>{subscribeResult}</p>}
+        </NewsletterWrapper>
+      </IndexWrapper>
     </Layout>
   )
 }
