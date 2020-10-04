@@ -17,7 +17,12 @@ import Zoom from "react-reveal/Zoom"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 //TODO:-
 // change react reveal animation to be from bottom up(i think it is fade)
-
+// make site offline
+// check post image crediting compatibility
+// add google analytics
+// add mailchimp rss newsltter
+// medium,dev.to,twitter,facebook,instagram,linkedIn zap
+// make subscribe to newsletter tab look better
 export default function Index() {
   const [subscribeResult, setSubscribeResult] = useState("")
   const [email, setEmail] = useState("")

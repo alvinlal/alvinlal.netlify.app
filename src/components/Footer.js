@@ -19,6 +19,9 @@ export const Footer = () => {
       gmail: file(relativePath: { eq: "gmail.svg" }) {
         publicURL
       }
+      rss: file(relativePath: { eq: "rss.svg" }) {
+        publicURL
+      }
     }
   `)
   return (
@@ -47,6 +50,9 @@ export const Footer = () => {
           rel="noreferrer"
         >
           <img src={file.gmail.publicURL} alt="gmail logo" />
+        </a>
+        <a href="/blog/rss.xml" target="_blank" rel="noreferrer">
+          <img src={file.rss.publicURL} alt="rss feed logo" />
         </a>
       </SocialIconsWrapper>
     </FooterWrapper>

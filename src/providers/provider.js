@@ -55,4 +55,5 @@ const Provider = ({ children }) => {
     </MDXProvider>
   )
 }
+
 export default ({ element }) => <Provider>{element}</Provider>

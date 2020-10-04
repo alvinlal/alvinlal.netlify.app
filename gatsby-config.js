@@ -20,6 +20,13 @@ module.exports = {
   plugins: [
     "gatsby-plugin-sharp",
     {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://alvinlal.netlify.app`,
+        stripQueryString: true,
+      },
+    },
+    {
       resolve: `gatsby-plugin-feed`,
       options: {
         query: `
@@ -34,6 +41,7 @@ module.exports = {
             }
           }
         `,
+
         feeds: [
           {
             serialize: ({ query: { site, allMdx } }) => {
@@ -60,10 +68,11 @@ module.exports = {
             },
             query: `
             {
-              allMdx(sort: {order: DESC, fields: [frontmatter___date]}) {
+              allMdx(sort: {order: DESC, fields: [frontmatter___date]}, filter: {fileAbsolutePath: {regex: "/posts/"}}) {
                 edges {
                   node {
                     excerpt
+                    body
                     html
                     frontmatter {
                       title
@@ -74,10 +83,10 @@ module.exports = {
                 }
               }
             }
-            
             `,
-            output: "/rss.xml",
+            output: "/blog/rss.xml",
             title: "RSS Feed",
+            match: "^/blog/",
           },
         ],
       },
