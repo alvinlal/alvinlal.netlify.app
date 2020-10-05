@@ -13,7 +13,7 @@ import {
   MailInputWrapper,
 } from "../styled-elements"
 import { useStaticQuery, graphql } from "gatsby"
-import Zoom from "react-reveal/Zoom"
+import Fade from "react-reveal/Fade"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 //TODO:-
 // change react reveal animation to be from bottom up(i think it is fade)
@@ -99,17 +99,18 @@ export default function Index() {
             </NodeWrapper>
           </LogoWrapper>
         </FullStackWrapper>
+
         <TopPostWrapper>
           <h1>Recent Posts</h1>
           <PostsWrapper>
             {data.allMdx.nodes.map(post => {
               return (
-                <Zoom key={post.id}>
+                <Fade key={post.id} bottom={true}>
                   <PostPreviewMobile
                     key={post.id}
                     info={{ id: post.id, ...post.frontmatter }}
                   />
-                </Zoom>
+                </Fade>
               )
             })}
           </PostsWrapper>
@@ -120,7 +121,7 @@ export default function Index() {
             See all &#8594;
           </BlogLink>
         </TopPostWrapper>
-
+        {/* <Fade bottom={true}> */}
         <NewsletterWrapper>
           <h1>SUBSCRIBE TO NEWSLETTER</h1>
 
@@ -134,6 +135,7 @@ export default function Index() {
           </MailInputWrapper>
           {subscribeResult && <p>{subscribeResult}</p>}
         </NewsletterWrapper>
+        {/* </Fade> */}
       </IndexWrapper>
     </Layout>
   )
