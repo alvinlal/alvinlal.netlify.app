@@ -66,14 +66,8 @@ const Post = ({ data, pageContext }) => {
         url: "https://alvinlal.netlify.app/logo.png",
       },
     },
-    datePublished:
-      date.split("-")[2] + "-" + date.split("-")[1] + "-" + date.split("-")[0],
-    dateModified:
-      lastmod.split("-")[0] +
-      "-" +
-      lastmod.split("-")[1] +
-      "-" +
-      lastmod.split("-")[2],
+    datePublished: date,
+    dateModified: lastmod,
   }
 
   const disqusConfig = {
@@ -98,9 +92,9 @@ const Post = ({ data, pageContext }) => {
             {"Published on " +
               months[parseInt(date.split("-")[1], 10) - 1] +
               " " +
-              date.split("-")[0].toString() +
-              " " +
               date.split("-")[2].toString() +
+              " " +
+              date.split("-")[0].toString() +
               "  "}
             <TimeToReadWrapper>
               {theme === "dark" ? (
@@ -110,7 +104,10 @@ const Post = ({ data, pageContext }) => {
               )}
               {timeToRead + " Read"}
             </TimeToReadWrapper>
-            <ViewCounter postUrl={siteUrl} title={title} />
+
+            {process.env.NODE_ENV === "production" && (
+              <ViewCounter postUrl={siteUrl} title={title} />
+            )}
           </DateWrapper>
         </PostHeaderWrapper>
         <PostbodyWrapper>
@@ -161,7 +158,7 @@ export const postQuery = graphql`
       frontmatter {
         title
         slug
-        date
+        date(formatString: "YYYY-MM-DD")
         lastmod
         timeToRead
         excerpt

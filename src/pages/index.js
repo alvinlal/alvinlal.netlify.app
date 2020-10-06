@@ -16,9 +16,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Fade from "react-reveal/Fade"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 //TODO:-
-// change react reveal animation to be from bottom up(i think it is fade)
 // make site offline
-// check post image crediting compatibility
 // add google analytics
 // add mailchimp rss newsltter
 // medium,dev.to,twitter,facebook,instagram,linkedIn zap
@@ -53,7 +51,7 @@ export default function Index() {
           frontmatter {
             title
             lastmod
-            date
+            date(formatString: "YYYY-MM-DD")
             excerpt
             slug
             timeToRead
@@ -121,21 +119,22 @@ export default function Index() {
             See all &#8594;
           </BlogLink>
         </TopPostWrapper>
-        {/* <Fade bottom={true}> */}
+
         <NewsletterWrapper>
           <h1>SUBSCRIBE TO NEWSLETTER</h1>
-
           <MailInputWrapper>
             <input
               type="text"
               placeholder="Email"
               onChange={e => setEmail(e.target.value)}
+              aria-label="email"
             />
-            <button onClick={handleSubmit}>SUBSCRIBE</button>
+            <button onClick={handleSubmit} aria-label="subscribe to newletter">
+              SUBSCRIBE
+            </button>
           </MailInputWrapper>
           {subscribeResult && <p>{subscribeResult}</p>}
         </NewsletterWrapper>
-        {/* </Fade> */}
       </IndexWrapper>
     </Layout>
   )

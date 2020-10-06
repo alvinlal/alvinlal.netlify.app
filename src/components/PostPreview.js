@@ -70,9 +70,9 @@ export const PostPreview = ({ info }) => {
             {"Published on " +
               months[parseInt(date.split("-")[1], 10) - 1] +
               " " +
-              date.split("-")[0].toString() +
-              " " +
               date.split("-")[2].toString() +
+              " " +
+              date.split("-")[0].toString() +
               "  "}
             <TimeToReadWrapper>
               {theme === "dark" ? (

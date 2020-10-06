@@ -7,7 +7,7 @@ export const usePosts = () => {
         nodes {
           id
           frontmatter {
-            date
+            date(formatString: "YYYY-MM-DD")
             title
             slug
             timeToRead
