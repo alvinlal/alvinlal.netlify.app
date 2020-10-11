@@ -70,7 +70,7 @@ export default function Index() {
       "personal portfolio of alvin lal and a blog for everything about web development",
     image: "https://alvinlal.netlify.app/logo.png",
     sameAs: [
-      "https://www.instagram.com/lal_alvin_7/",
+      "https://www.instagram.com/alvin__lal/",
       "https://twitter.com/alvinlal7",
       "https://www.linkedin.com/in/alvin-lal-146a841b8/",
       "https://github.com/alvinlal",
