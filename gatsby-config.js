@@ -1,4 +1,3 @@
-require("dotenv").config()
 const {
   NODE_ENV,
   URL: NETLIFY_SITE_URL = "https://alvinlal.netlify.app",

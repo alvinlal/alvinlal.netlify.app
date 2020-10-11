@@ -5,6 +5,13 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Temperory posts for local development
+my-first-post/
+my-second-post/
+my-third-post/
+my-fourth-post/
+
+
 # Runtime data
 pids
 *.pid

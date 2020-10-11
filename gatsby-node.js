@@ -37,7 +37,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           link: index === 0 ? null : posts[index - 1].frontmatter.slug,
           title: index === 0 ? null : posts[index - 1].frontmatter.title,
         },
-        githubLink: `https://github.com/alvinlal/alvinlal.com/blob/master/src/posts/${post.frontmatter.slug}/index.mdx`,
+        githubLink: `https://github.com/alvinlal/alvinlal.netlify.app/tree/master/src/posts/${post.frontmatter.slug}/index.mdx`,
       },
     })
   })
