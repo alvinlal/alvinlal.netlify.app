@@ -21,6 +21,12 @@ module.exports = {
   plugins: [
     "gatsby-plugin-sharp",
     {
+      resolve: "gatsby-plugin-offline",
+      options: {
+        precachePages: ["/blog/*"],
+      },
+    },
+    {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
         siteUrl: `https://alvinlal.netlify.app`,
@@ -58,7 +64,6 @@ module.exports = {
                     site.siteMetadata.siteUrl +
                     "/blog/" +
                     edge.node.frontmatter.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }],
                 })
               })
             },

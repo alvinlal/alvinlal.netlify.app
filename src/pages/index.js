@@ -15,12 +15,11 @@ import {
 import { useStaticQuery, graphql } from "gatsby"
 import Fade from "react-reveal/Fade"
 import firebase from "gatsby-plugin-firebase"
-
 import addToMailchimp from "gatsby-plugin-mailchimp"
+
 //TODO:-
-// make site offline
+
 // add mailchimp rss newsltter
-// try to add lastmod to sitemap.xml
 
 export default function Index() {
   const [subscribeResult, setSubscribeResult] = useState("")
