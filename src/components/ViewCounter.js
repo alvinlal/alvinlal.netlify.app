@@ -57,6 +57,7 @@ export const ViewCounter = ({ postUrl, title }) => {
             res.docs.forEach(doc => doc.ref.update({ views: views + 1 }))
           })
       })
+    firebase.analytics().logEvent(`${title}`)
   }, [postUrl, title])
   return (
     <ViewCountWrapper>

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Layout, PostPreviewMobile, Seo } from "../components"
 import {
   IndexWrapper,
@@ -14,18 +14,20 @@ import {
 } from "../styled-elements"
 import { useStaticQuery, graphql } from "gatsby"
 import Fade from "react-reveal/Fade"
+import firebase from "gatsby-plugin-firebase"
+
 import addToMailchimp from "gatsby-plugin-mailchimp"
 //TODO:-
 // make site offline
-// add google analytics
 // add mailchimp rss newsltter
-// medium,dev.to,twitter,facebook,instagram,linkedIn zap
-// make subscribe to newsletter tab look better
 // try to add lastmod to sitemap.xml
+
 export default function Index() {
   const [subscribeResult, setSubscribeResult] = useState("")
   const [email, setEmail] = useState("")
-
+  useEffect(() => {
+    firebase.analytics().logEvent("Index page")
+  }, [])
   const handleSubmit = async () => {
     if (email.length === 0) {
       return false

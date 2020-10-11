@@ -25,6 +25,9 @@ export const PostPreviewWrapperMobile = styled.div`
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
+    :hover {
+      transform: none;
+    }
   }
 `
 

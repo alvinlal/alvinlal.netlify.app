@@ -68,20 +68,22 @@ export const LogoWrapper = styled.div`
   }
 `
 export const TopPostWrapper = styled.div`
-  min-height: 150vh;
+  /* min-height: 150vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 70%;
-
+  margin-top: 10px;
   h1 {
     color: ${({ theme }) => theme.headings};
     margin-bottom: 30px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 95%;
-    min-height: 200vh;
+    margin-top: 0px;
+
+    /* min-height: 200vh; */
   }
 `
 export const PostsWrapper = styled.div`
@@ -113,7 +115,7 @@ export const NewsletterWrapper = styled.div`
   width: 70%;
   height: 300px;
   margin-top: 100px;
-  margin-bottom: 300px;
+  margin-bottom: 200px;
   h1 {
     color: ${({ theme }) => (theme.text === "#1D1A1A" ? "#0077AC" : "white")};
     margin-top: 80px;
