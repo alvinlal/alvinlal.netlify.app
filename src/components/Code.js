@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
-import darkTheme from "prism-react-renderer/themes/palenight"
+import darkTheme from "../themes/darkTheme"
 import lightTheme from "../themes/vsCodeTheme"
 
 import {

@@ -132,7 +132,7 @@ module.exports = {
           allSitePage.edges.map(edge => {
             return {
               url: site.siteMetadata.siteUrl + edge.node.path,
-              priority: edge.node.path === "/blog/" ? 1 : 0.5,
+              priority: edge.node.path === "/blog/" ? 1 : 0.7,
             }
           }),
       },

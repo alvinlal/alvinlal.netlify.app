@@ -92,6 +92,7 @@ export const Seo = ({
                 {JSON.stringify(schemaMarkup)}
               </script>
             )}
+            <html lang="en" />
           </Helmet>
         )
       }}

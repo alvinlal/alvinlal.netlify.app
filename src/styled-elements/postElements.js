@@ -17,6 +17,7 @@ export const PostHeaderWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+
   h1 {
     color: ${({ theme }) => theme.headings};
     font-size: 3rem;
@@ -32,6 +33,8 @@ export const PostbodyWrapper = styled.div`
   color: ${({ theme }) => theme.text};
   width: 80%;
   margin: auto;
+  min-height: 100vh;
+  padding-bottom: 100px;
   border-bottom: ${({ theme }) => `2px solid ${theme.border}`};
   h1,
   h2,
@@ -59,6 +62,8 @@ export const PostbodyWrapper = styled.div`
     font-size: 1.2rem;
     margin-top: 2rem;
     line-height: 1.8rem;
+    /* word-break: break-all;
+    hyphens: auto; */
   }
   ol,
   ul {
@@ -86,8 +91,9 @@ export const PostbodyWrapper = styled.div`
   }
   code {
     font-family: ${({ theme }) => theme.fonts.code};
-    background-color: ${({ theme }) => theme.codeBackground};
-    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) =>
+      theme.lightTheme ? "#708fff" : theme.codeBackground};
+    color: ${({ theme }) => (theme.lightTheme ? "white" : theme.text)};
     font-size: inherit;
     border-radius: 5px;
     padding: 0px 5px;
@@ -120,14 +126,23 @@ export const PostbodyWrapper = styled.div`
   table {
     margin: auto;
   }
+  img.animated-gif {
+    width: 100%;
+    height: auto;
+    margin: 30px 0px;
+  }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
     h1 {
       font-size: 1.5rem;
     }
+    h2 {
+      font-size: 1.2rem;
+    }
     p {
       font-size: 1rem;
       line-height: 1.4rem;
+      /* word-break: break-all; */
     }
     pre {
       font-size: 1rem;
@@ -165,7 +180,7 @@ export const PreWrapper = styled.pre`
   }
 `
 export const Line = styled.div`
-  display: table-row;
+  display: flex;
 `
 
 export const LineNo = styled.span`
@@ -179,11 +194,14 @@ export const LineNo = styled.span`
 export const LineContent = styled.span`
   display: table-cell;
 `
-export const CopySpan = styled.span`
+export const CopySpan = styled.div`
   cursor: pointer;
-  float: right;
+  margin-left: 200px;
   :hover {
     color: ${({ theme }) => theme.headings};
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    margin-left: 60px;
   }
 `
 export const EditOnGithubWrapper = styled.a`

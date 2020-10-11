@@ -11,8 +11,8 @@ export const IndexWrapper = styled.div`
 export const FullStackWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 90vh;
-  width: 700px;
+  min-height: 85vh;
+  /* width: 700px; */
   align-items: center;
   justify-content: center;
   h1 {
@@ -57,10 +57,11 @@ export const NodeWrapper = styled.div`
 export const LogoWrapper = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: row;
-  margin-left: 220px;
+  flex-direction: column;
+
   margin-top: 20px;
-  justify-content: flex-start;
+  justify-content: center;
+
   align-items: center;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     margin-left: 0px;
