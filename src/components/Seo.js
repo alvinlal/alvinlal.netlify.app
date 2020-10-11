@@ -9,6 +9,7 @@ export const Seo = ({
   image,
   siteUrl,
   schemaMarkup,
+  index = false,
 }) => {
   return (
     <StaticQuery
@@ -87,11 +88,18 @@ export const Seo = ({
                   }
             )}
           >
+            {index && (
+              <meta
+                name="google-site-verification"
+                content="D3W-bAtg_VfRqXiKCNIe3v8jGDJzQXrf5JgkMl9Ruzw"
+              />
+            )}
             {schemaMarkup && (
               <script type="application/ld+json">
                 {JSON.stringify(schemaMarkup)}
               </script>
             )}
+
             <html lang="en" />
           </Helmet>
         )

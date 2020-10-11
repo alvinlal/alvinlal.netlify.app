@@ -84,7 +84,9 @@ export default function Index() {
       <Seo
         title={"alvin lal's portfolio website and blog"}
         schemaMarkup={schema}
+        index={true}
       />
+
       <IndexWrapper>
         <FullStackWrapper>
           <h1>
