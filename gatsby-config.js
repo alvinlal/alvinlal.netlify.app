@@ -65,14 +65,6 @@ module.exports = {
                     "/blog/" +
                     edge.node.frontmatter.slug,
 
-                  custom_elements: [
-                    {
-                      image:
-                        edge.node.frontmatter.featureImage.publicURL &&
-                        site.siteMetadata.siteUrl +
-                          edge.node.frontmatter.featureImage.publicURL,
-                    },
-                  ],
                 })
               })
             },
