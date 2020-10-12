@@ -33,6 +33,7 @@ module.exports = {
         stripQueryString: true,
       },
     },
+
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -64,7 +65,7 @@ module.exports = {
                     site.siteMetadata.siteUrl +
                     "/blog/" +
                     edge.node.frontmatter.slug,
-
+                  custom_elements: [{ "content:encoded": edge.node.html }],
                 })
               })
             },
