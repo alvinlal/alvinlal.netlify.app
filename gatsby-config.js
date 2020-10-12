@@ -64,11 +64,15 @@ module.exports = {
                     site.siteMetadata.siteUrl +
                     "/blog/" +
                     edge.node.frontmatter.slug,
-                  enclosure: edge.node.frontmatter.featureImage.publicURL && {
-                    url:
-                      site.siteMetadata.siteUrl +
-                      edge.node.frontmatter.featureImage.publicURL,
-                  },
+
+                  custom_elements: [
+                    {
+                      image:
+                        edge.node.frontmatter.featureImage.publicURL &&
+                        site.siteMetadata.siteUrl +
+                          edge.node.frontmatter.featureImage.publicURL,
+                    },
+                  ],
                 })
               })
             },
