@@ -2,27 +2,31 @@ import React, { useState, useEffect } from "react"
 import { Layout, PostPreviewMobile, Seo } from "../components"
 import {
   IndexWrapper,
-  FullStackWrapper,
-  ReactWrapper,
-  NodeWrapper,
-  LogoWrapper,
+  HeroBannerOneWrapper,
+  HeroBannerTwoWrapper,
+  WorldWideWebImageWrapper,
+  EternalWrapper,
   TopPostWrapper,
   PostsWrapper,
   BlogLink,
   NewsletterWrapper,
   MailInputWrapper,
+  WhoamiWrapper,
+  DeveloperWrapper,
+  TechStackWrapper,
+  TechStackIconsWrapper,
 } from "../styled-elements"
 import { useStaticQuery, graphql } from "gatsby"
 import Fade from "react-reveal/Fade"
 import firebase from "gatsby-plugin-firebase"
 import addToMailchimp from "gatsby-plugin-mailchimp"
-
-//TODO:-
-
-// add mailchimp rss newsltter
+import { ThemeContext } from "../providers/provider"
 
 export default function Index() {
-  const [subscribeResult, setSubscribeResult] = useState("")
+  const { theme } = React.useContext(ThemeContext)
+  const [subscribeResult, setSubscribeResult] = useState(
+    "Your Email won't be shared to anyone else other than me"
+  )
   const [email, setEmail] = useState("")
   useEffect(() => {
     firebase.analytics().logEvent("Index page")
@@ -41,10 +45,46 @@ export default function Index() {
   }
   const data = useStaticQuery(graphql`
     {
+      developerLogoDark: file(relativePath: { eq: "developerDark.svg" }) {
+        publicURL
+      }
+      developerLogoLight: file(relativePath: { eq: "developerLight.svg" }) {
+        publicURL
+      }
+      wwwDark: file(relativePath: { eq: "wwwDark.svg" }) {
+        publicURL
+      }
+      wwwLight: file(relativePath: { eq: "wwwLight.svg" }) {
+        publicURL
+      }
+      gatsbyLogo: file(relativePath: { eq: "gatsby.svg" }) {
+        publicURL
+      }
+      graphqlLogo: file(relativePath: { eq: "graphql.svg" }) {
+        publicURL
+      }
       reactLogo: file(relativePath: { eq: "react.png" }) {
         publicURL
       }
       nodeLogo: file(relativePath: { eq: "node.png" }) {
+        publicURL
+      }
+      electronLogo: file(relativePath: { eq: "electron.svg" }) {
+        publicURL
+      }
+      awsLogo: file(relativePath: { eq: "aws.png" }) {
+        publicURL
+      }
+      firebaseLogo: file(relativePath: { eq: "firebase.svg" }) {
+        publicURL
+      }
+      dockerLogo: file(relativePath: { eq: "docker.png" }) {
+        publicURL
+      }
+      postgreLogo: file(relativePath: { eq: "postgre.png" }) {
+        publicURL
+      }
+      mongoLogo: file(relativePath: { eq: "mongodb.png" }) {
         publicURL
       }
       allMdx(sort: { fields: frontmatter___date, order: DESC }, limit: 4) {
@@ -88,20 +128,129 @@ export default function Index() {
       />
 
       <IndexWrapper>
-        <FullStackWrapper>
-          <h1>
-            Full<span>Stack</span> Developer.
-          </h1>
-          <LogoWrapper>
-            <ReactWrapper>
-              <img src={data.reactLogo.publicURL} alt="react logo" />
-            </ReactWrapper>
-            <NodeWrapper>
-              <img src={data.nodeLogo.publicURL} alt="nodejs logo" />
-            </NodeWrapper>
-          </LogoWrapper>
-        </FullStackWrapper>
-
+        <HeroBannerOneWrapper>
+          <WhoamiWrapper>
+            <h1>Who Am I ?</h1>
+            <p>
+              {" "}
+              My name is Alvin lal and I am a<span>
+                {" "}
+                fullstack developer
+              </span>{" "}
+              from Kerala, India. I specialize in everything Javascript all the
+              way from frontend using React to backend using Node js.
+            </p>
+            <TechStackWrapper>
+              <h2>Tech stack </h2>
+              <TechStackIconsWrapper>
+                <a
+                  href="https://nodejs.org/en/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={data.nodeLogo.publicURL} alt="nodejs logo" />
+                </a>
+                <a
+                  href="https://www.gatsbyjs.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={data.gatsbyLogo.publicURL} alt="gatsbyjs logo" />
+                </a>
+                <a href="https://graphql.org/" target="_blank" rel="noreferrer">
+                  <img src={data.graphqlLogo.publicURL} alt="graphql logo" />
+                </a>
+                <a
+                  href="https://www.electronjs.org/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src={data.electronLogo.publicURL}
+                    alt="electronjs logo"
+                  />
+                </a>
+                <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
+                  <img src={data.reactLogo.publicURL} alt="reactjs logo" />
+                </a>
+                <a
+                  href="https://firebase.google.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={data.firebaseLogo.publicURL} alt="firebase logo" />
+                </a>
+                <a
+                  href="https://aws.amazon.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={data.awsLogo.publicURL} alt="aws logo" />
+                </a>
+                <a
+                  href="https://www.docker.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={data.dockerLogo.publicURL} alt="docker logo" />
+                </a>
+                <a
+                  href="https://www.postgresql.org/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={data.postgreLogo.publicURL} alt="postgreSQL logo" />
+                </a>
+                <a
+                  href="https://www.mongodb.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={data.mongoLogo.publicURL} alt="mongodb logo" />
+                </a>
+              </TechStackIconsWrapper>
+            </TechStackWrapper>
+          </WhoamiWrapper>{" "}
+          <DeveloperWrapper>
+            <Fade bottom={true}>
+              <img
+                src={
+                  theme === "dark"
+                    ? data.developerLogoDark.publicURL
+                    : data.developerLogoLight.publicURL
+                }
+                alt={"developer illustration"}
+              />
+            </Fade>
+          </DeveloperWrapper>
+        </HeroBannerOneWrapper>
+        <HeroBannerTwoWrapper>
+          <WorldWideWebImageWrapper>
+            <Fade bottom={true}>
+              <img
+                src={
+                  theme === "dark"
+                    ? data.wwwDark.publicURL
+                    : data.wwwLight.publicURL
+                }
+                alt={"worldwideweb illustration"}
+              />
+            </Fade>
+          </WorldWideWebImageWrapper>
+          <EternalWrapper>
+            <h1>Eternal learner of the WWW</h1>
+            <p>
+              Ever since I have been introduced to the world wide web, Scraping
+              Knowledge about the world through it became my hobby.
+            </p>
+            <button
+              onClick={() => alert("cv is still work in progress")}
+              aria-label="subscribe to newletter"
+            >
+              DOWNLOAD CV
+            </button>
+          </EternalWrapper>
+        </HeroBannerTwoWrapper>
         <TopPostWrapper>
           <h1>Recent Posts</h1>
           <PostsWrapper>

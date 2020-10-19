@@ -19,6 +19,9 @@ export const Footer = () => {
       gmail: file(relativePath: { eq: "gmail.svg" }) {
         publicURL
       }
+      linkedin: file(relativePath: { eq: "linkedin.svg" }) {
+        publicURL
+      }
       rss: file(relativePath: { eq: "rss.svg" }) {
         publicURL
       }
@@ -43,6 +46,13 @@ export const Footer = () => {
           rel="noreferrer"
         >
           <img src={file.twitter.publicURL} alt="twitter logo" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/alvin-lal-146a841b8/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img src={file.linkedin.publicURL} alt="linkedin logo" />
         </a>
         <a
           href="mailto:alvinzzz2001@gmail.com"
