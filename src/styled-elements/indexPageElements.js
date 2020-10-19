@@ -125,8 +125,10 @@ export const HeroBannerTwoWrapper = styled.div`
   margin: 20px 20px;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     min-height: 80vh;
+    width: 95%;
     flex-direction: column;
     justify-content: flex-start;
+    margin: 20px 0px;
   }
 `
 export const WorldWideWebImageWrapper = styled.div`
