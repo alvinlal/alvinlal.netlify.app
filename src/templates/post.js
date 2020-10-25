@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { Layout, Seo, ViewCounter } from "../components"
+import { Layout, Seo } from "../components"
 import { ThemeContext } from "../providers/provider"
 import { Disqus } from "gatsby-plugin-disqus"
 import {
@@ -105,9 +105,9 @@ const Post = ({ data, pageContext }) => {
               {timeToRead + " Read"}
             </TimeToReadWrapper>
 
-            {process.env.NODE_ENV === "production" && (
+            {/* {process.env.NODE_ENV === "production" && (
               <ViewCounter postUrl={siteUrl} title={title} />
-            )}
+            )} */}
           </DateWrapper>
         </PostHeaderWrapper>
         <PostbodyWrapper>
