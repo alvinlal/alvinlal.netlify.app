@@ -2,13 +2,14 @@
   "python.pythonPath": "/usr/bin/python3",
   "grammarly.userWords": [
     "childProcess",
+    "cpu",
     "featureImage",
     "getfibonacci",
     "lastmod",
     "nodejs",
+    "stackoverflow",
     "testrequest",
-    "timeToRead",
-    "cpu"
+    "timeToRead"
   ],
   "grammarly.audience": "general",
   "grammarly.dialect": "american"

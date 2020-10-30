@@ -1,0 +1,365 @@
+---
+title: "The Big O notation"
+slug: "the-big-o-notation"
+date: 2020-10-27
+lastmod: 2020-10-27
+timeToRead: 10 min
+featureImage: heartinbits.jpg
+excerpt: Learning about the big O notation is one of the first steps that you can take before starting your DSA learning path. Read on to learn more about it and how to use it for determining the scalability of your algorithm.
+---
+
+![heart-in-bits](heartinbits.jpg)
+
+<center>
+  <i>
+    Photo by{" "}
+    <a
+      href="https://unsplash.com/@swimstaralex?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+      target="_blank"
+      rel="noreferrer"
+    >
+      Alexander Sinn
+    </a>{" "}
+    on{" "}
+    <a
+      href="https://unsplash.com/s/photos/big-data?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+      target="_blank"
+      rel="noreferrer"
+    >
+      Unsplash
+    </a>
+  </i>
+</center>
+
+# Big O everywhere
+
+If you are from a computer science background, chances are that you have came across some kind of an
+algorithm which is just a fancy word for instructions given to a computer. For example, an algorithm
+for printing elements of an array, or for finding the sum of elements of an array etc. If you are that
+kind of person , like me , who looks up sites like stackOverflow for explanations about such algorithms, you
+would often find terms like `O(log n)` or `O(N)` or `O(1)` etc. What does that notation have to do with an
+algorithm always been a myth to me.
+
+![spiderman-meme](spidermanmeme.jpg)
+
+It was finally when I decided to learn advanced data structures and algorithms that I found
+these notations are crucial while evaluating and explaining an algorithm.
+
+# So, What is the Big O notation ?
+
+**"It is simply a representation of how your algorithm performs on different inputs and also on the different number of inputs."**
+
+As the input and the number of input increases , your algorithm has to scale, that is its efficiency will change. Big O notation
+is used to **indicate how well your algorithm will scale**. It may scale poorly or scale good, That is
+depended on two things.
+
+1. Amount of time taken for the algorithm to complete
+2. Amount of memory space taken by the algorithm to complete
+
+**These two things together determine the complexity of an algorithm called space-time complexity and
+Big O notation is used to represent this complexity.**
+
+The syntax is a big `O` followed by `(an expression)`. What comes inside the parenthesis is discussed below.
+One may think ( like I did 😅 ) that a single big O notation is used for representing both space and time complexity, well this
+is wrong and separate notations which follows the same syntax is used. For example, you would say that algorithm `insert algorithm name here` has
+a space complexity of `O(n)` and time complexity of `O(1)`.
+
+Big O notation is independent of the machine that you are using to run the algorithm. It does not
+take machine-depended scalability factors like the number of cores, memory access time, etc into consideration.
+
+# Types of measurements
+
+An algorithm may perform differently on different cases. These cases maybe the
+number of inputs, the order of the inputs, size of a single input,  etc. 
+An algorithm will perform with different efficiency on all these cases. So the efficiency of
+the algorithm is measured by considering three different cases.
+
+1. **Worst-case**
+2. Best-case
+3. Average-case
+
+For example, the worst case for linearly searching an array would be searching for an
+element that is not in the array. In this case, space and time are taken for searching every single
+element in the array. The best case would be the case where the element is in the first index of the
+array. The average case analysis is not easy to do in most of the practical cases and it is rarely done.
+In the average case-analysis, we must know (or predict) the mathematical distribution of all possible inputs.
+The worst-case scenario is used for big O notations because it will always have the highest space-time complexity.
+
+>Most big O notations represent time complexity implicitly, because we should be concerned about time more than space and also space complexity does not grow that
+>fast in most algorithms. This does not mean you shouldn't consider space complexity while evaluating an algorithm. 
+>The methods for calculating both space and time is the same. So all the examples below represent time complexity.
+
+# Different types of Big O notations
+
+The different types of Big O notations are based on different types of space or time complexity.
+
+1. **Constant complexity**
+2. **Linear complexity**
+3. **Logarithmic complexity**
+4. **Quadratic complexity**
+5. **Exponential complexity**
+
+## Constant complexity O(1)
+
+Constant complexity is represented using O(1) and is the most efficient complexity. Here the
+complexity does not grow as the input increases. Operations like assigning a variable, accessing an array by index, if-else statements
+etc have O(1) complexity because they take the same time.
+
+```javascript
+var arr = [1,2,3,4,5]; //O(1)
+
+console.log(arr[2]) //O(1)
+
+arr.push(6)//O(1)
+
+```
+ 
+The above code contains some examples of O(1) operations like assignment,logging and appending to an array.
+
+The performance graph of a constant time algorithm will look like this
+
+![constant-time](constantgraph.png)
+
+<center>you can see that time remains constant even though the input size increases.</center>
+
+## Linear complexity O(n)
+
+Linear complexity is represented using O(n), where 'n' is the number of inputs. That is,
+As the number of inputs increases, the time also increases by a unit scale of n.
+
+Consider the block of code for printing elements of an array.
+
+> I use javascript for the examples, but there is nothing specific about javascript here.
+> Big O is  programming-language independent.
+
+```javascript
+var array = [1, 2, 3, 4, 5] //O(1)
+
+for (x in array) { //O(n)
+  //console.log is used for printing the value
+  console.log(x) //O(1) 
+}
+```
+
+> How O(1),O(n) and O(1) add up to O(n) is discussed [later](#findbigo) in this article
+
+If you take the performance graph of the above code, it would give you a linear graph.
+
+![linear-graph](lineargraph.png)
+
+## Logarithmic complexity O(log n)
+
+Logarithmic complexity is represented by O(log n).This may be the trickiest of them all to understand.
+
+Before getting into Logarithmic complexity, let us first understand what does 
+the log of a number means. That is what does, say for example log 8 means?.
+Inorder to answer that question we need one more thing, the base of the log.
+10 is considered as the default base in mathematics. But in computer science, 2 is the
+default base. The base can be of any number. Just bear in mind when we say O(log n), we are actually representing log with base 2 of the number 'n'.
+
+So now we know about the base, lets answer the original question.
+
+**log of a number means how many times the base has to be raised (powered) to get 
+the number in question**
+
+that is,  log(8) = base<sup>?</sup>= 2<sup>?</sup>
+
+The number that comes at the place of the question mark is our answer.
+
+In our case, the base is implicitly **2**. So we can ask the question, How many
+times the number in question (n) can be **halved** ?.
+
+That is, log(8) = how many times 8 can be halved = 3
+
+so log<sub>2</sub>(8) = 3.
+
+This halving process is done in many algorithms like binary search in an array and binary search in a tree.
+
+Consider the code for Binary search in an array which has time complexity O (log n)
+
+```javascript
+var array = [1, 2, 3, 4, 5, 6, 7] 
+
+function binarySearch(element) {
+  var l = 0  
+  var h = 6  
+  var mid;  
+  while (l <= h) {  //O(log n)
+    mid = (l + h) / 2 
+    if (array[mid] == element) {
+      console.log("element found at", mid)
+      break
+    } else if (element < array[mid]) {
+      h = mid - 1
+    } else {
+      l = mid + 1
+    }
+  }
+  if (l > h) {
+    console.log("element is not found")
+  }
+}
+
+binarySearch(2)
+```
+Here the time complexity of the while loop is O(log n), but what if the element 
+we are searching is at the mid of the array?, then we would need only one operation and then 
+the time complexity will be O(1), but this is only the best-case scenario. **We always
+take the worst-case scenario while evaluating an algorithm**. So, it would be O (log n).
+
+![logarithmic-graph](loggraph.png)
+
+<center>graph of logarithmic function</center>
+              
+
+### O (n * log n)
+
+This notation is a combination of both linear and logarithmic notation, For each operation , there 
+is also a linear-time operation of n. This can be better explained using an example.
+
+Merge sort is a great example which has a time complexity of O(n * log n)
+
+```javascript
+
+function mergeSort(arr, l, h) { // O (log n)
+  if (l < h) {
+    var mid = Math.floor((l + h) / 2);
+    mergeSort(arr, l, mid);  
+    mergeSort(arr, mid + 1, h);
+    merge(arr, l, mid, h);// O (n)
+  }
+}
+
+```
+
+In the case of binary search in an array,we were just dividing the array and accessing its mid element and 
+the accessing operation only takes a constant time of O(1). But in the case of merge sort, for Each and every division of the array, we have to merge the array back
+, the merging function sorts the array and that sorting function has
+a linear time complexity of O (n). hence the net time complexity will be O(n * log n).
+
+<h2> Quadratic complexity O(n<sup>2</sup>)</h2>
+
+Quadratic complexity is represented as O(n<sup>2</sup>).
+
+This complexity is one of those which leans towards the less efficient side.
+You want to avoid this complexity as much as possible. Here, for every input the time complexity
+doubles. A loop inside another loop is a common example for O(n<sup>2</sup>).
+
+Selection sort is O(n<sup>2</sup>) since for every element, we are comparing
+it with every other element in the array
+
+```javascript
+var array = [1, 6, 2, 5, 4, 3];
+
+function swap(n1, n2) {
+  var temp = array[n1];
+  array[n1] = array[n2];
+  array[n2] = temp;
+}
+
+function selectionSort() {
+  for (let i = 0; i < array.length - 1; i++) { // O(n)
+    for (let j = i + 1; j < array.length; j++) { // O(n)
+      if (array[i] > array[j]) {
+        swap(i, j);
+      }
+    }
+  }
+}
+selectionSort();
+console.log(array);
+```
+![quadratic-graph](quadraticgraph.png)
+<center>graph of a quadratic function, we can observe that time grows very fast as it approaches infinity</center>
+
+You Think Quadratic complexity grows fast? , wait until you see exponential complexity !.
+
+
+<h2> Exponential complexity O(2<sup>n</sup>)</h2>
+
+Exponential complexity is represented as O(2<sup>n</sup>) and it is one of the 
+fastest-growing, least-efficient complexity.
+
+The travelling salesman problem is one of the classic problems which can be solved by an
+algorithm which has O(2<sup>n</sup>) complexity.
+
+Suppose a salesman had ‘x’ number of places to visit and he wanted to determine the shortest distance he could travel. 
+How many possibilities would he have to assess to do so?
+
+For example, let's take he had 4 places to visit. When he starts at the first location, he
+have 3 possible places he can go next. Once he go to the next city, he now have 2 possible places to visit, then 1.
+So we can calculate the shortest path by calculating all the different possibilities
+of pathways he could travel. The number of possibilities will look like this.
+
+**4 X 3 X 2 X 1** or **4!  =24**
+
+Now, let's add one more city, then the number of possibilities will look like this.
+
+**5 X 4 X 3 X 2 X 1** or **5! =120**
+
+You can see how fast it grew. So while this algorithm is guaranteed to give you
+the shortest path possible, it will take large amounts of time as the input grows.
+There are some other ways to find the shortest path by using a genetic algorithm which takes less time, but it may not 
+give you the correct result, but it will give you a fairly good result.
+
+![exponential-graph](exponentialgraph.png)
+<center>graph of a exponential function</center>
+
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+
+![big-o-complexity-chart](complexitychart.png)
+
+<center>comparison chart of different complexities from <a href="https://www.bigocheatsheet.com/">bigocheatsheet.com</a></center>
+
+<h1 id="findbigo"> How to find Big O notation of any function ? </h1>
+
+The general rule of thumb to remember while finding the notation is **always Simplify the notation down
+to the fastest-growing, worst-case senario**.
+
+The ascending order of the complexities is O(1) < O(log (n) ) < O(n) < O(n * log (n) ) < O(n<sup>2</sup>) < O(2<sup>n</sup>) 
+
+Your code may contain many functions and each function may contain many operations . Take the time complexity
+of each operation on the worst-case scenario. The net complexity will be the complexity of the function or operation which has 
+the least efficiency.
+
+Suppose your code contains two functions, one takes O(n) and the other takes O(n<sup>2</sup>), then we would neglect the function
+with O(n) because the time taken by it will be very small relative to the function with O(n<sup>2</sup>).
+
+But for more complex algorithm's you are gonna have many more functions with many more lines and 
+you can find the big O notation precisely using a set of mathematical rules. CS Dojo's [video](https://www.youtube.com/watch?v=D6xkbGLQesk) greatly explains how to 
+do this.
+  
+
+
+# Asymptotic Notations
+
+Let's put aside computer science for a second and find out what is an Asymptotic
+Notation of a function in mathematics.
+
+Asymptotic notation are used to represent the asymptotic behavior of a function, What is asymptotic behavior then ?.
+Asymptotic behavior of a function is the behavior the function exhibits when the limit tends to infinity. In other
+words, it is the behavior exhibited by the function when the input is very large (close to infinity). It is
+also called **tail behaviour**.
+
+![asymptote-graph](asymptotegraph.png)
+<center>asymptote graph</center>
+
+Why do we care about this ?, Well,we care about this because the true colors of an algorithm can only be seen in the asymptotic nature of runtime and space.
+Big O is one of the **Asymptotic bounds**. Other asymptotic bounds
+include Big Omega represented as Ω and theta represented as Θ. Big O represents the upper bound. 
+The definition of the upper bound is given as "T(n) is O(f(n))" iff for some constants c and n0,Where T(n) is the time function, T(n) less than or equal to c * f(n) for all n greater than or equal to n0.
+In English...this means...we can say that f(n) is a fundamental function that can upper bound T(n)'s value for all n going on forever.
+We can use any bound to represent our algorithm, but we use the upper bound (Big O) because an upper bound shows the maximum resource an algorithm uses.
+That said, we can use the lower bound big Ω to show the least resource our algorithm uses.
+
+
+
+# Conclusion
+Big O notation is very useful for comparing and evaluating different algorithms, but it 
+is not the only thing that we should consider. Other factors like the readability of the code that we write for the algorithm etc should also be considered.
+Bear in mind that Big O is only used for evaluating space-time complexity aka "performance" of an algorithm. 
+ 
