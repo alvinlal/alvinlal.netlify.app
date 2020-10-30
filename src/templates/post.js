@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { Layout, Seo } from "../components"
+import { Layout, Seo, FireBaseAnalytics } from "../components"
 import { ThemeContext } from "../providers/provider"
 import { Disqus } from "gatsby-plugin-disqus"
 import {
@@ -41,6 +41,7 @@ const Post = ({ data, pageContext }) => {
   } = data.mdx.frontmatter
   const seoImage = data.mdx.frontmatter.featureImage.publicURL
   const siteUrl = data.site.siteMetadata.siteUrl + `/blog/${slug}`
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -105,9 +106,9 @@ const Post = ({ data, pageContext }) => {
               {timeToRead + " Read"}
             </TimeToReadWrapper>
 
-            {/* {process.env.NODE_ENV === "production" && (
-              <ViewCounter postUrl={siteUrl} title={title} />
-            )} */}
+            {process.env.NODE_ENV === "production" && (
+              <FireBaseAnalytics title={title} />
+            )}
           </DateWrapper>
         </PostHeaderWrapper>
         <PostbodyWrapper>
