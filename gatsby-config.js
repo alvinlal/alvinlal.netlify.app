@@ -20,12 +20,7 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-sharp",
-    {
-      resolve: "gatsby-plugin-offline",
-      options: {
-        precachePages: ["/blog/*"],
-      },
-    },
+    "gatsby-plugin-remove-serviceworker",
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
