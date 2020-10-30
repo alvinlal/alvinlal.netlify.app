@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { Layout, Seo, FireBaseAnalytics } from "../components"
+import { Layout, Seo, FirebaseAnalytics } from "../components"
 import { ThemeContext } from "../providers/provider"
 import { Disqus } from "gatsby-plugin-disqus"
 import {
@@ -107,7 +107,7 @@ const Post = ({ data, pageContext }) => {
             </TimeToReadWrapper>
 
             {process.env.NODE_ENV === "production" && (
-              <FireBaseAnalytics title={title} />
+              <FirebaseAnalytics title={title} />
             )}
           </DateWrapper>
         </PostHeaderWrapper>
