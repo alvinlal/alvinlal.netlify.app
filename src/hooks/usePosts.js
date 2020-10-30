@@ -14,7 +14,7 @@ export const usePosts = () => {
             excerpt
             featureImage {
               childImageSharp {
-                fixed(width: 200, height: 200) {
+                fixed(width: 200, height: 200, quality: 70) {
                   ...GatsbyImageSharpFixed_tracedSVG
                 }
               }
