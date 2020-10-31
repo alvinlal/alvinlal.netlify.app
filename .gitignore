@@ -11,6 +11,8 @@ my-second-post/
 my-third-post/
 my-fourth-post/
 
+# note file for running test programs
+note.js
 
 # Runtime data
 pids

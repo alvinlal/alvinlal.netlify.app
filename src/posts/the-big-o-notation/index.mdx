@@ -2,7 +2,7 @@
 title: "The Big O notation"
 slug: "the-big-o-notation"
 date: 2020-10-27
-lastmod: 2020-10-27
+lastmod: 2020-10-31
 timeToRead: 10 min
 featureImage: heartinbits.jpg
 excerpt: Learning about the big O notation is one of the first steps that you can take before starting your DSA learning path. Read on to learn more about it and how to use it for determining the scalability of your algorithm.
@@ -175,6 +175,10 @@ so log<sub>2</sub>(8) = 3.
 
 This halving process is done in many algorithms like binary search in an array and binary search in a tree.
 
+Do note that we should stop halving when we go below one.
+
+That is log(25) = how many times 8 can be halved ~ 4.64
+
 Consider the code for Binary search in an array which has time complexity O (log n)
 
 ```javascript
@@ -210,7 +214,10 @@ take the worst-case scenario while evaluating an algorithm**. So, it would be O 
 ![logarithmic-graph](loggraph.png)
 
 <center>graph of logarithmic function</center>
-              
+
+Also note that logarithm is the inverse of exponentiation, **log<sub>2</sub>(value)=exponent ---> 2<sup>exponent</sup>=value**
+
+
 
 ### O (n * log n)
 
@@ -311,36 +318,134 @@ give you the correct result, but it will give you a fairly good result.
 <br></br>
 <br></br>
 
+>These are only the most common type of complexities and an algorithm can have any
+>complexity function or even the combination of many complexities.
+
 ![big-o-complexity-chart](complexitychart.png)
 
 <center>comparison chart of different complexities from <a href="https://www.bigocheatsheet.com/">bigocheatsheet.com</a></center>
 
 <h1 id="findbigo"> How to find Big O notation of any function ? </h1>
 
-The general rule of thumb to remember while finding the notation is **always Simplify the notation down
-to the fastest-growing, worst-case senario**.
+To calculate Big O notation there are some general rules of thumb you should follow
+and while these rules are not concrete, it will give you a general idea about big O notation calculation.
 
-The ascending order of the complexities is O(1) < O(log (n) ) < O(n) < O(n * log (n) ) < O(n<sup>2</sup>) < O(2<sup>n</sup>) 
+## 1.Constant operations in our algorithm
 
-Your code may contain many functions and each function may contain many operations . Take the time complexity
-of each operation on the worst-case scenario. The net complexity will be the complexity of the function or operation which has 
-the least efficiency.
+The code that we write for our algorithm may contain many constant operations. All these operations have O(1) time complexity. 
+Some of the common constant complexity operations are,
 
-Suppose your code contains two functions, one takes O(n) and the other takes O(n<sup>2</sup>), then we would neglect the function
-with O(n) because the time taken by it will be very small relative to the function with O(n<sup>2</sup>).
+ 1. Arithmetic operations (add,sum,sub,division etc)
+ 2. Assignment operations (var a=b, const b=2 etc)
+ 3. Accessing elements of an array or object ( array[2], a.b etc)
 
-But for more complex algorithm's you are gonna have many more functions with many more lines and 
-you can find the big O notation precisely using a set of mathematical rules. CS Dojo's [video](https://www.youtube.com/watch?v=D6xkbGLQesk) greatly explains how to 
-do this.
-  
+## 2.Loops in our algorithm
+
+When it comes to loops, the rule to remember is that **"the time complexity of the loop is the length of the loop times the complexity of whatever happens inside of the loop"**.
+
+For example,
+
+```javascript
+for(let i=0;i<n;i++){ // O(n)
+
+total+=i // O(1)
+
+}
+```
+In the above case the complexity of the loop is O(n) * O(1) = O(n)
+
+```javascript
+for(let i=0;i<n;i++){ // O(n)
+   for(let j=0;j<n;j++){ // O(n)
+      console.log(i,j)  
+} 
+}
+```
+In the above case the complexity is O(n) * O(n) = O(n<sup>2</sup>)
+
+## 3.Constants don't matter
+
+O(2n) = O(n)
+
+O(1000n) = O(n)
+
+O(3n<sup>2</sup>) = O(n<sup>2</sup>)
+
+O(500) = O(1)
+
+The simplest way to understand why constant's don't matter is by visualising the graphs.
+
+Take the graph of n and 2n , or a 1000n.
+
+![yxgraph](yxgraph.png)
+<center>green is 1000n,blue is 2n,purple is n,red is 1/2 n. All the graphs are straight lines.</center>
+
+In big O , we only care about the [asymptotic upper bound](#asymptotic) of the graph.
+
+It can be also referred as the general trend of the graph, or the "Big picture".
+
+It is the behavior of the graph when it tends to infinity, and we can observe that the graph of the function f(n) has a behavior of a straight line whether it is n ,2n or a 1000n. 
+That is why constants don't matter when n gets very large.
+
+## 4.Smaller terms don't matter
+
+O(5n+2) = O (n)
+
+O(1000n<sup>2</sup>+10)= O(n<sup>2</sup>)
+
+O(n<sup>2</sup>+5n+8) = O(n<sup>2</sup>)
+
+Our algorithm may be comprised of many operations and each operation may have a different big O notation. So, while finding out the net Big O notation, 
+we should eliminate all the smaller terms as shown above.
+
+Take O(n<sup>2</sup>+5n+8) for example. Consider n=1000.
+
+then the output will be 1000<sup>2</sup>+5*1000+8 = 10million+5008.
+
+we can observe how small is 5008 compared to 10 million. So, if we draw the graph of this function,the change bought by 5n+2 is very small when n is large. 
+So we can eliminate 5n+2.
+
+![quadratic-graph](quadraticdiffgraph.png)
+<center>Blue shows graph of n<sup>2</sup> while red shows graph of x<sup>2</sup>+5x+8, the difference is barely visible.</center>
 
 
-# Asymptotic Notations
+There are some mathematical rules you can use to calculate big O equations and if you
+want to learn more about that check out CS Dojo's [video](https://youtu.be/D6xkbGLQesk).
+
+
+# Space complexity
+
+We have been talking about time complexity up to now. while time is our number one 
+priority, memory space taken by an algorithm should also be evaluated. The rules 
+for analysing space complexity is  the same as for time complexity, but we care about 
+how memory space grows instead of time. Space complexities allow us to reserve memory space in advance.
+
+Some rules to remember are
+
+ 1.Most primitives (booleans,numbers,null) are constant space
+ 2.Strings require O(n) space (where n is the string length)
+ 3.Arrays, Objects, etc have O(n) space (where n is array length or number of keys in an object)
+ 
+
+```javascript
+
+var total = 0;
+
+  for (var i = 0; i <= n; i++) {
+    total += i;
+  }
+
+```
+
+While the above code has a time complexity of O(n), it has a space complexity of O(1)
+because as n grows the space allocated for the variable total is constant.
+
+<h1 id="asymptotic"> Asymptotic Notations </h1>
 
 Let's put aside computer science for a second and find out what is an Asymptotic
 Notation of a function in mathematics.
 
-Asymptotic notation are used to represent the asymptotic behavior of a function, What is asymptotic behavior then ?.
+Asymptotic notation is used to represent the asymptotic behavior of a function, What is asymptotic behavior then ?.
 Asymptotic behavior of a function is the behavior the function exhibits when the limit tends to infinity. In other
 words, it is the behavior exhibited by the function when the input is very large (close to infinity). It is
 also called **tail behaviour**.
@@ -361,5 +466,6 @@ That said, we can use the lower bound big Ω to show the least resource our algo
 # Conclusion
 Big O notation is very useful for comparing and evaluating different algorithms, but it 
 is not the only thing that we should consider. Other factors like the readability of the code that we write for the algorithm etc should also be considered.
-Bear in mind that Big O is only used for evaluating space-time complexity aka "performance" of an algorithm. 
+Bear in mind that Big O is only used for evaluating space-time complexity aka "performance" of an algorithm. As always, feel free to put any doubts in the comment section
+below and we will work it out.
  
