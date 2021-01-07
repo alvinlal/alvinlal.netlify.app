@@ -98,6 +98,8 @@ The different types of Big O notations are based on different types of space or 
 3. **Logarithmic complexity**
 4. **Quadratic complexity**
 5. **Exponential complexity**
+6. **Factorial complexity**
+
 
 ## Constant complexity O(1)
 
@@ -281,14 +283,38 @@ console.log(array);
 
 You Think Quadratic complexity grows fast? , wait until you see exponential complexity !.
 
+<h2>Exponential complexity O(2<sup>n</sup>)</h2>
 
-<h2> Exponential complexity O(2<sup>n</sup>)</h2>
+This is also a complexity on the very least efficient side and should be avoided, Consider this
+code for finding fibanacci of a number using recursion.
 
-Exponential complexity is represented as O(2<sup>n</sup>) and it is one of the 
+```javascript
+function fib(n){
+  if(n<2) return 1;
+  return fib(n-1) + fib(n-2);
+}
+
+console.log(fib(45)); //would take some seconds
+
+```
+
+while this is a short and easy to understand solution to finding the fibanacci of a number, it 
+grows exponentially, this is illustrated by the following diagram.
+
+![fibanacci-growth](fibanacigrowth.png)
+
+![exponential-graph](exponentialgraph.png)
+<center>graph of a exponential function</center>
+
+
+
+<h2> Factorial complexity O(n!)</h2>
+
+Factorial complexity is represented as O(n!) and it is one of the 
 fastest-growing, least-efficient complexity.
 
 The travelling salesman problem is one of the classic problems which can be solved by an
-algorithm which has O(2<sup>n</sup>) complexity.
+algorithm which has O(n!) complexity.
 
 Suppose a salesman had ‘x’ number of places to visit and he wanted to determine the shortest distance he could travel. 
 How many possibilities would he have to assess to do so?
@@ -309,8 +335,8 @@ the shortest path possible, it will take large amounts of time as the input grow
 There are some other ways to find the shortest path by using a genetic algorithm which takes less time, but it may not 
 give you the correct result, but it will give you a fairly good result.
 
-![exponential-graph](exponentialgraph.png)
-<center>graph of a exponential function</center>
+![factorial-graph](factorialgraph.png)
+<center>graph of a factorial function</center>
 
 <br></br>
 <br></br>
