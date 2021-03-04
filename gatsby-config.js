@@ -22,6 +22,15 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-plugin-remove-serviceworker",
     {
+      resolve: `gatsby-plugin-gdpr-cookies`,
+      options: {
+        googleAnalytics: {
+          anonymize: true,
+        },
+        environments: ["production", "development"],
+      },
+    },
+    {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
         siteUrl: `https://alvinlal.netlify.app`,
