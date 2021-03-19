@@ -190,7 +190,9 @@ export const SkillWrapper = styled.div`
     display: none;
     color: ${({ theme }) => theme.text};
   }
-
+  a {
+    display: none;
+  }
   :hover {
     transform: scale(1.2, 1.1);
     flex-direction: column;
@@ -213,6 +215,7 @@ export const SkillWrapper = styled.div`
       font-weight: bold;
     }
     a {
+      display: inline-block;
       text-decoration: none;
       color: ${({ theme }) => theme.headings};
     }
