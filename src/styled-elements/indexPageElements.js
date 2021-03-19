@@ -190,10 +190,7 @@ export const SkillWrapper = styled.div`
     display: none;
     color: ${({ theme }) => theme.text};
   }
-  a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.headings};
-  }
+
   :hover {
     transform: scale(1.2, 1.1);
     flex-direction: column;
@@ -214,6 +211,10 @@ export const SkillWrapper = styled.div`
       display: block;
       font-size: 15px;
       font-weight: bold;
+    }
+    a {
+      text-decoration: none;
+      color: ${({ theme }) => theme.headings};
     }
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
