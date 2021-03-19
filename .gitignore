@@ -6,10 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Temperory posts for local development
-my-first-post/
-my-second-post/
-my-third-post/
-my-fourth-post/
+how-to-cache-your-express-server-using-redis/
 
 # note file for running test programs
 note.js

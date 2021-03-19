@@ -23,82 +23,73 @@ export const HeroBannerOneWrapper = styled.div`
 `
 
 export const WhoamiWrapper = styled.div`
+  color: ${({ theme }) => theme.text};
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  align-items: flex-start;
+  margin-top: 50px;
   h1 {
     color: ${({ theme }) => theme.headings};
     margin-bottom: 30px;
     font-weight: bold;
     font-size: 70px;
   }
-  color: ${({ theme }) => theme.text};
-  font-size: 20px;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  height: 500px;
-  align-items: flex-start;
   span {
     color: ${({ theme }) => theme.headings};
   }
-  margin-top: 50px;
-  /* margin-right: 70px; */
   p {
-    line-height: 2rem;
+    font-size: 42px;
+    line-height: 60px;
+  }
+  button {
+    border: ${({ theme }) => `2px solid ${theme.border}`};
+    color: ${({ theme }) => (theme.text === "#1D1A1A" ? "#0077AC" : "white")};
+    background-color: ${({ theme }) => theme.background};
+    padding: 10px;
+    margin-top: 50px;
+    cursor: pointer;
+    :hover {
+      color: ${({ theme }) => theme.headings};
+    }
+    width: 275px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    :focus {
+      outline: none;
+    }
+    :hover {
+      transform: translateX(10px);
+      box-shadow: ${({ theme }) => theme.hoverShadow};
+    }
+    transition: all 0.3s linear;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 97%;
     margin-top: 20px;
-    /* text-align: center; */
     height: 400px;
-    word-break: break-all;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* word-break: break-all; */
     h1 {
       color: ${({ theme }) => theme.headings};
       margin-bottom: 30px;
       font-weight: bold;
       font-size: 50px;
     }
-    justify-content: center;
-    align-items: center;
-  }
-  p {
-    font-size: 1.2rem;
-    line-height: 1.8rem;
-  }
-`
-export const TechStackWrapper = styled.div`
-  width: auto;
-  margin-top: 30px;
-
-  h2 {
-    color: ${({ theme }) => theme.headings};
-    font-weight: bold;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-`
-export const TechStackIconsWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: space-between;
-  justify-content: space-between;
-  height: 150px;
-  margin-top: 20px;
-  width: 400px;
-  img {
-    width: 50px;
-    height: 50px;
-    margin: 0px 10px;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: 95%;
-    img {
-      width: 40px;
-      height: 40px;
-      margin: 0px 10px;
+    p {
+      font-size: 23px;
+      line-height: 36px;
+    }
+    button {
+      font-size: 1.2rem;
+      width: 250px;
+      height: 65px;
     }
   }
 `
@@ -116,92 +107,132 @@ export const DeveloperWrapper = styled.div`
   }
 `
 
-export const HeroBannerTwoWrapper = styled.div`
-  display: flex;
+export const AboutWrapper = styled.div`
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 75%;
+  }
+`
 
-  justify-content: center;
-  align-items: center;
+export const HeroBannerTwoWrapper = styled.div`
   min-height: 100vh;
   margin: 20px 20px;
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    min-height: 80vh;
-    width: 95%;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin: 20px 0px;
-  }
-`
-export const WorldWideWebImageWrapper = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
-  margin-bottom: 100px;
-  img {
-    height: 400px;
-    width: 100%;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    display: none;
-    height: 0px;
-    width: 0px;
-  }
-`
-export const EternalWrapper = styled.div`
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   h1 {
     color: ${({ theme }) => theme.headings};
     margin-bottom: 30px;
     font-weight: bold;
-    font-size: 70px;
+    font-size: 62px;
+    text-align: center;
   }
-  color: ${({ theme }) => theme.text};
-  font-size: 20px;
-  width: 50%;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    min-height: 80vh;
+    margin: 40px 0px;
+  }
+`
+export const SkillsWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  height: 500px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-left: 50px;
-  span {
+  width: 90%;
+  height: 460px;
+  margin: 0px auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 100%;
+    margin-right: 0px;
+  }
+`
+
+export const SkillWrapper = styled.div`
+  height: 200px;
+  width: 300px;
+  border: ${({ theme }) => `2px solid ${theme.border}`};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 40px 20px 0px;
+  background: ${({ theme }) => theme.background};
+  box-shadow: ${({ theme }) => theme.shadow};
+  transition: all 0.3s ease-in-out;
+  img {
+    width: 150px;
+    height: 150px;
+  }
+  .cpp {
+    width: 150px;
+    height: 169px;
+  }
+  .docker {
+    width: 180px;
+    height: 130px;
+  }
+  .react {
+    width: 200px;
+    height: 142px;
+  }
+  h1 {
+    display: none;
     color: ${({ theme }) => theme.headings};
   }
-  margin-top: 50px;
-  /* margin-right: 70px; */
   p {
-    line-height: 2rem;
+    display: none;
+    color: ${({ theme }) => theme.text};
   }
-  button {
-    border: ${({ theme }) => `2px solid ${theme.border}`};
-    color: ${({ theme }) => (theme.text === "#1D1A1A" ? "#0077AC" : "white")};
-    background-color: ${({ theme }) => theme.background};
-    padding: 10px;
-    margin-top: 50px;
-    cursor: pointer;
-    :hover {
-      color: ${({ theme }) => theme.headings};
+  a {
+    text-decoration: none;
+    color: ${({ theme }) => theme.headings};
+  }
+  :hover {
+    transform: scale(1.2, 1.1);
+    flex-direction: column;
+    z-index: 2;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    img {
+      display: none;
     }
-    width: 180px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.1rem;
-    :focus {
-      outline: none;
+    h1 {
+      display: block;
+      font-size: 32px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    p {
+      display: block;
+      font-size: 15px;
+      font-weight: bold;
     }
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    width: 95%;
-    margin: 0px;
-    h1 {
-      color: ${({ theme }) => theme.headings};
-      margin-bottom: 30px;
-      font-weight: bold;
-      font-size: 50px;
-    }
+    margin-right: 0px;
+  }
+`
 
-    p {
-      font-size: 1.2rem;
-      line-height: 1.8rem;
-    }
+export const DownArrow = styled.div`
+  box-sizing: border-box;
+  height: 3vw;
+  width: 3vw;
+  border-style: solid;
+  border-color: ${({ theme }) => `${theme.border}`};
+  border-width: 0px 8px 8px 0px;
+  transform: rotate(45deg);
+  margin-top: 10px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    height: 50px;
+    width: 50px;
   }
 `
 

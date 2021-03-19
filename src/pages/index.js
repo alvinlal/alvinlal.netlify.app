@@ -4,17 +4,17 @@ import {
   IndexWrapper,
   HeroBannerOneWrapper,
   HeroBannerTwoWrapper,
-  WorldWideWebImageWrapper,
-  EternalWrapper,
   TopPostWrapper,
   PostsWrapper,
   BlogLink,
   NewsletterWrapper,
   MailInputWrapper,
   WhoamiWrapper,
+  AboutWrapper,
   DeveloperWrapper,
-  TechStackWrapper,
-  TechStackIconsWrapper,
+  SkillsWrapper,
+  SkillWrapper,
+  DownArrow,
 } from "../styled-elements"
 import { useStaticQuery, graphql } from "gatsby"
 import Fade from "react-reveal/Fade"
@@ -57,34 +57,43 @@ export default function Index() {
       wwwLight: file(relativePath: { eq: "wwwLight.svg" }) {
         publicURL
       }
+      phpLogo: file(relativePath: { eq: "php.svg" }) {
+        publicURL
+      }
+      jsLogo: file(relativePath: { eq: "js.png" }) {
+        publicURL
+      }
+      cppLogo: file(relativePath: { eq: "c++.png" }) {
+        publicURL
+      }
+      dockerLogo: file(relativePath: { eq: "docker.png" }) {
+        publicURL
+      }
+      nodeLogo: file(relativePath: { eq: "node.png" }) {
+        publicURL
+      }
+      reactLogo: file(relativePath: { eq: "react.png" }) {
+        publicURL
+      }
       gatsbyLogo: file(relativePath: { eq: "gatsby.svg" }) {
         publicURL
       }
       graphqlLogo: file(relativePath: { eq: "graphql.svg" }) {
         publicURL
       }
-      reactLogo: file(relativePath: { eq: "react.png" }) {
+      mongoLogo: file(relativePath: { eq: "mongodb.png" }) {
         publicURL
       }
-      nodeLogo: file(relativePath: { eq: "node.png" }) {
+      htmlLogo: file(relativePath: { eq: "html.png" }) {
         publicURL
       }
-      electronLogo: file(relativePath: { eq: "electron.svg" }) {
-        publicURL
-      }
-      awsLogo: file(relativePath: { eq: "aws.png" }) {
-        publicURL
-      }
-      firebaseLogo: file(relativePath: { eq: "firebase.svg" }) {
-        publicURL
-      }
-      dockerLogo: file(relativePath: { eq: "docker.png" }) {
-        publicURL
-      }
-      postgreLogo: file(relativePath: { eq: "postgre.png" }) {
+      cssLogo: file(relativePath: { eq: "css.png" }) {
         publicURL
       }
       mongoLogo: file(relativePath: { eq: "mongodb.png" }) {
+        publicURL
+      }
+      mysqlLogo: file(relativePath: { eq: "mysql.png" }) {
         publicURL
       }
       allMdx(sort: { fields: frontmatter___date, order: DESC }, limit: 4) {
@@ -130,86 +139,24 @@ export default function Index() {
       <IndexWrapper>
         <HeroBannerOneWrapper>
           <WhoamiWrapper>
-            <h1>Who Am I ?</h1>
-            <p>
-              {" "}
-              My name is Alvin lal and I am a<span>
+            <AboutWrapper>
+              <h1>Who Am I ?</h1>
+              <p>
                 {" "}
-                fullstack developer
-              </span>{" "}
-              from Kerala, India. I specialize in everything Javascript all the
-              way from frontend using React to backend using Node js.
-            </p>
-            <TechStackWrapper>
-              <h2>Tech stack </h2>
-              <TechStackIconsWrapper>
-                <a
-                  href="https://nodejs.org/en/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={data.nodeLogo.publicURL} alt="nodejs logo" />
-                </a>
-                <a
-                  href="https://www.gatsbyjs.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={data.gatsbyLogo.publicURL} alt="gatsbyjs logo" />
-                </a>
-                <a href="https://graphql.org/" target="_blank" rel="noreferrer">
-                  <img src={data.graphqlLogo.publicURL} alt="graphql logo" />
-                </a>
-                <a
-                  href="https://www.electronjs.org/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    src={data.electronLogo.publicURL}
-                    alt="electronjs logo"
-                  />
-                </a>
-                <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
-                  <img src={data.reactLogo.publicURL} alt="reactjs logo" />
-                </a>
-                <a
-                  href="https://firebase.google.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={data.firebaseLogo.publicURL} alt="firebase logo" />
-                </a>
-                <a
-                  href="https://aws.amazon.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={data.awsLogo.publicURL} alt="aws logo" />
-                </a>
-                <a
-                  href="https://www.docker.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={data.dockerLogo.publicURL} alt="docker logo" />
-                </a>
-                <a
-                  href="https://www.postgresql.org/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={data.postgreLogo.publicURL} alt="postgreSQL logo" />
-                </a>
-                <a
-                  href="https://www.mongodb.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img src={data.mongoLogo.publicURL} alt="mongodb logo" />
-                </a>
-              </TechStackIconsWrapper>
-            </TechStackWrapper>
+                My name is Alvin lal and I am a<span>
+                  {" "}
+                  fullstack developer
+                </span>{" "}
+                from Kerala, India.
+              </p>
+            </AboutWrapper>
+
+            <button
+              onClick={() => alert("resume is still work in progress")}
+              aria-label="download cv"
+            >
+              DOWNLOAD RESUME
+            </button>
           </WhoamiWrapper>{" "}
           <DeveloperWrapper>
             <Fade bottom={true}>
@@ -225,31 +172,265 @@ export default function Index() {
           </DeveloperWrapper>
         </HeroBannerOneWrapper>
         <HeroBannerTwoWrapper>
-          <WorldWideWebImageWrapper>
-            <Fade bottom={true}>
+          <h1>Skills</h1>
+          <SkillsWrapper>
+            <SkillWrapper>
+              <img src={data.phpLogo.publicURL} alt="php logo" />
+              <h1>Php</h1>
+              <p>
+                Php is a server side scripting language that is especially
+                suited to web development
+              </p>
+              <br></br>
+              <p>
+                projects :{" "}
+                <span>
+                  <a
+                    href="https://github.com/alvinlal/phpmvc"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Phpmvc
+                  </a>
+                </span>
+              </p>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.jsLogo.publicURL} alt="js logo" />
+              <h1>Javascript</h1>
+              <p>
+                Javascript is a client side scripting language with rich
+                frameworks and libraries
+              </p>
+              <br></br>
+              <p>
+                projects :{" "}
+                <span>
+                  <a
+                    href="https://github.com/alvinlal/alvinlal.netlify.app"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Portfolio Site
+                  </a>
+                </span>
+              </p>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img class="cpp" src={data.cppLogo.publicURL} alt="c++ logo" />
+              <h1>C++</h1>
+              <p>
+                C++ is general purpose programming language that is used to make
+                high performing, mission critical apps
+              </p>
+              {/* <br></br>
+              <p>
+                projects :{" "}
+                <span>
+                  <a
+                    href="https://github.com/alvinlal/phpmvc"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Phpmvc
+                  </a>
+                </span>
+              </p> */}
+            </SkillWrapper>
+            <SkillWrapper>
               <img
-                src={
-                  theme === "dark"
-                    ? data.wwwDark.publicURL
-                    : data.wwwLight.publicURL
-                }
-                alt={"worldwideweb illustration"}
+                class="docker"
+                src={data.dockerLogo.publicURL}
+                alt="docker logo"
               />
-            </Fade>
-          </WorldWideWebImageWrapper>
-          <EternalWrapper>
-            <h1>Eternal learner of the WWW</h1>
-            <p>
-              Ever since I have been introduced to the world wide web, Scraping
-              Knowledge about the world through it became my hobby.
-            </p>
-            <button
-              onClick={() => alert("cv is still work in progress")}
-              aria-label="subscribe to newletter"
-            >
-              DOWNLOAD CV
-            </button>
-          </EternalWrapper>
+              <h1>Docker</h1>
+              <p>Docker is a containerisation tool that is used for devops</p>
+              {/* <br></br>
+              <p>
+                projects :{" "}
+                <span>
+                  <a
+                    href="https://github.com/alvinlal/phpmvc"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Phpmvc
+                  </a>
+                </span>
+              </p> */}
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.nodeLogo.publicURL} alt="nodejs logo" />
+              <h1>Nodejs</h1>
+              <p>
+                Nodejs is a single-threaded event driven javascript runtime
+                outside the browser
+              </p>
+              {/* <br></br>
+              <p>
+                projects :{" "}
+                <span>
+                  <a
+                    href="https://github.com/alvinlal/phpmvc"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Phpmvc
+                  </a>
+                </span>
+              </p> */}
+            </SkillWrapper>
+            <SkillWrapper>
+              <img
+                class="react"
+                src={data.reactLogo.publicURL}
+                alt="react logo"
+              />
+              <h1>React</h1>
+              <p>
+                React is a javascript framework for building user interfaces by
+                facebook
+              </p>
+              <br></br>
+              <p>
+                projects :{" "}
+                <span>
+                  <a
+                    href="https://github.com/alvinlal/alvinlal.netlify.app"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Portfolio Site
+                  </a>
+                </span>
+              </p>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.gatsbyLogo.publicURL} alt="gatsby logo" />
+              <h1>Gatsby</h1>
+              <p>Gatsby is a static site generator for react</p>
+              <br></br>
+              <p>
+                projects :{" "}
+                <span>
+                  <a
+                    href="https://github.com/alvinlal/alvinlal.netlify.app"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Portfolio Site
+                  </a>
+                </span>
+              </p>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.graphqlLogo.publicURL} alt="graphql logo" />
+              <h1>Graphql</h1>
+              <p>
+                GraphQL is an open-source data query and manipulation language
+                for APIs, and a runtime for fulfilling queries with existing
+                data
+              </p>
+              {/* <br></br>
+              <p>
+                projects :{" "}
+                <span>
+                  <a
+                    href="https://github.com/alvinlal/alvinlal.netlify.app"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Portfolio Site
+                  </a>
+                </span>
+              </p> */}
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.mongoLogo.publicURL} alt="mongodb logo" />
+              <h1>Mongodb</h1>
+              <p>
+                MongoDB is a open-source cross-platform document-oriented noSql
+                database
+              </p>
+              {/* <br></br>
+              <p>
+                projects :{" "}
+                <span>
+                  <a
+                    href="https://github.com/alvinlal/alvinlal.netlify.app"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Portfolio Site
+                  </a>
+                </span>
+              </p> */}
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.htmlLogo.publicURL} alt="html logo" />
+              <h1>Html</h1>
+              <p>
+                Html stands for hyper text markup language which is used for
+                creating webpages
+              </p>
+              <br></br>
+              <p>
+                projects :{" "}
+                <span>
+                  <a
+                    href="https://github.com/alvinlal/alvinlal.netlify.app"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Portfolio Site
+                  </a>
+                </span>
+              </p>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.cssLogo.publicURL} alt="css logo" />
+              <h1>Css</h1>
+              <p>
+                Css stands for cascading style sheets which is used for styling
+                web pages
+              </p>
+              <br></br>
+              <p>
+                projects :{" "}
+                <span>
+                  <a
+                    href="https://github.com/alvinlal/alvinlal.netlify.app"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Portfolio Site
+                  </a>
+                </span>
+              </p>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.mysqlLogo.publicURL} alt="mysql logo" />
+              <h1>Mysql</h1>
+              <p>
+                Mysql is a relational database managment system which uses
+                structured query language (SQL)
+              </p>
+              <br></br>
+              {/* <p>
+                projects :{" "}
+                <span>
+                  <a
+                    href="https://github.com/alvinlal/alvinlal.netlify.app"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Portfolio Site
+                  </a>
+                </span>
+              </p> */}
+            </SkillWrapper>
+          </SkillsWrapper>
+          <DownArrow />
         </HeroBannerTwoWrapper>
         <TopPostWrapper>
           <h1>Recent Posts</h1>
