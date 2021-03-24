@@ -229,7 +229,7 @@ module.exports = {
               maxWidth: 1200,
               withWebp: true,
               tracedSVG: true,
-              quality: 100,
+              quality: 90,
               wrapperStyle: `margin:2rem auto;`,
             },
           },
