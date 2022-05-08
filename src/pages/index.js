@@ -217,47 +217,25 @@ export default function Index() {
               </p>
             </SkillWrapper>
             <SkillWrapper>
-              <img class="cpp" src={data.cppLogo.publicURL} alt="c++ logo" />
+              <img
+                className="cpp"
+                src={data.cppLogo.publicURL}
+                alt="c++ logo"
+              />
               <h1>C++</h1>
               <p>
                 C++ is general purpose programming language that is used to make
                 high performing, mission critical apps
               </p>
-              {/* <br></br>
-              <p>
-                projects :{" "}
-                <span>
-                  <a
-                    href="https://github.com/alvinlal/phpmvc"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Phpmvc
-                  </a>
-                </span>
-              </p> */}
             </SkillWrapper>
             <SkillWrapper>
               <img
-                class="docker"
+                className="docker"
                 src={data.dockerLogo.publicURL}
                 alt="docker logo"
               />
               <h1>Docker</h1>
               <p>Docker is a containerisation tool that is used for devops</p>
-              {/* <br></br>
-              <p>
-                projects :{" "}
-                <span>
-                  <a
-                    href="https://github.com/alvinlal/phpmvc"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Phpmvc
-                  </a>
-                </span>
-              </p> */}
             </SkillWrapper>
             <SkillWrapper>
               <img src={data.nodeLogo.publicURL} alt="nodejs logo" />
@@ -266,23 +244,10 @@ export default function Index() {
                 Nodejs is a single-threaded event driven javascript runtime
                 outside the browser
               </p>
-              {/* <br></br>
-              <p>
-                projects :{" "}
-                <span>
-                  <a
-                    href="https://github.com/alvinlal/phpmvc"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Phpmvc
-                  </a>
-                </span>
-              </p> */}
             </SkillWrapper>
             <SkillWrapper>
               <img
-                class="react"
+                className="react"
                 src={data.reactLogo.publicURL}
                 alt="react logo"
               />
@@ -293,7 +258,6 @@ export default function Index() {
               </p>
               <br></br>
               <p>
-                projects :{" "}
                 <span>
                   <a
                     href="https://github.com/alvinlal/alvinlal.netlify.app"
@@ -331,19 +295,6 @@ export default function Index() {
                 for APIs, and a runtime for fulfilling queries with existing
                 data
               </p>
-              {/* <br></br>
-              <p>
-                projects :{" "}
-                <span>
-                  <a
-                    href="https://github.com/alvinlal/alvinlal.netlify.app"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Portfolio Site
-                  </a>
-                </span>
-              </p> */}
             </SkillWrapper>
             <SkillWrapper>
               <img src={data.mongoLogo.publicURL} alt="mongodb logo" />
@@ -352,19 +303,6 @@ export default function Index() {
                 MongoDB is a open-source cross-platform document-oriented noSql
                 database
               </p>
-              {/* <br></br>
-              <p>
-                projects :{" "}
-                <span>
-                  <a
-                    href="https://github.com/alvinlal/alvinlal.netlify.app"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Portfolio Site
-                  </a>
-                </span>
-              </p> */}
             </SkillWrapper>
             <SkillWrapper>
               <img src={data.htmlLogo.publicURL} alt="html logo" />
@@ -416,18 +354,6 @@ export default function Index() {
                 structured query language (SQL)
               </p>
               <br></br>
-              {/* <p>
-                projects :{" "}
-                <span>
-                  <a
-                    href="https://github.com/alvinlal/alvinlal.netlify.app"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Portfolio Site
-                  </a>
-                </span>
-              </p> */}
             </SkillWrapper>
           </SkillsWrapper>
           <DownArrow />
