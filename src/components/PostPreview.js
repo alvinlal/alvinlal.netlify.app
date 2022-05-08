@@ -9,7 +9,7 @@ import {
   TimeToReadWrapper,
 } from "../styled-elements"
 import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { ThemeContext } from "../providers/provider"
 const months = [
@@ -33,9 +33,7 @@ export const PostPreview = ({ info }) => {
     {
       mobileImage: file(relativePath: { eq: "useless.png" }) {
         childImageSharp {
-          fixed(width: 1, height: 1) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(height: 1, width: 1)
         }
       }
       clockIconLight: file(relativePath: { eq: "clock-light.svg" }) {
@@ -48,13 +46,7 @@ export const PostPreview = ({ info }) => {
   `)
 
   const { id, date, title, slug, excerpt, image, timeToRead } = info
-  const source = [
-    data.mobileImage.childImageSharp.fixed,
-    {
-      ...image,
-      media: `(min-width:800px)`,
-    },
-  ]
+
   return (
     <Link
       to={`/blog/${slug}`}
@@ -62,7 +54,7 @@ export const PostPreview = ({ info }) => {
     >
       <PostPreviewWrapper>
         <FeatureImageWrapper className={"featureImage"}>
-          <Image key={id} fixed={source} fadeIn={true} alt="feature image" />
+          <GatsbyImage key={id} image={image} alt="feature image" />
         </FeatureImageWrapper>
         <InfoWrapper>
           <TitleWrapper>{title}</TitleWrapper>

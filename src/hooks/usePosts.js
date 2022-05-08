@@ -14,9 +14,13 @@ export const usePosts = () => {
             excerpt
             featureImage {
               childImageSharp {
-                fixed(width: 200, height: 200, quality: 70) {
-                  ...GatsbyImageSharpFixed_tracedSVG
-                }
+                gatsbyImageData(
+                  width: 200
+                  height: 200
+                  quality: 70
+                  layout: FIXED
+                  placeholder: TRACED_SVG
+                )
               }
             }
           }
@@ -32,6 +36,6 @@ export const usePosts = () => {
     timeToRead: post.frontmatter.timeToRead,
     slug: post.frontmatter.slug,
     excerpt: post.frontmatter.excerpt,
-    image: post.frontmatter.featureImage.childImageSharp.fixed,
+    image: post.frontmatter.featureImage.childImageSharp.gatsbyImageData,
   }))
 }

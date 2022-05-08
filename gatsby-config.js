@@ -19,6 +19,7 @@ module.exports = {
     siteUrl: siteUrl,
   },
   plugins: [
+    "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-plugin-remove-serviceworker",
     {
@@ -132,24 +133,21 @@ module.exports = {
               }
             }
             allSitePage {
-              edges {
-                node {
-                  path
-                
-                }
+              nodes {
+                path
               }
             }
          
           
         }`,
 
-        serialize: ({ site, allSitePage }) =>
-          allSitePage.edges.map(edge => {
-            return {
-              url: site.siteMetadata.siteUrl + edge.node.path,
-              priority: edge.node.path === "/blog/" ? 1 : 0.7,
-            }
-          }),
+        serialize: ({ path, modifiedGmt }) => {
+          return {
+            url: path,
+            lastmod: modifiedGmt,
+            priority: path === "/blog/" ? 1 : 0.7,
+          }
+        },
       },
     },
     {

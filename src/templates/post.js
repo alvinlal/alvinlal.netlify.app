@@ -165,11 +165,6 @@ export const postQuery = graphql`
         excerpt
         featureImage {
           publicURL
-          childImageSharp {
-            fixed {
-              ...GatsbyImageSharpFixed_tracedSVG
-            }
-          }
         }
       }
     }

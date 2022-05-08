@@ -56,4 +56,6 @@ const Provider = ({ children }) => {
   )
 }
 
-export default ({ element }) => <Provider>{element}</Provider>
+const exportFn = ({ element }) => <Provider>{element}</Provider>
+
+export default exportFn
