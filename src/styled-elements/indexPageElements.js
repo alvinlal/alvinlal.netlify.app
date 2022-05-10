@@ -43,11 +43,12 @@ export const WhoamiWrapper = styled.div`
     font-size: 42px;
     line-height: 60px;
   }
-  button {
+  a {
     border: ${({ theme }) => `2px solid ${theme.border}`};
     color: ${({ theme }) => (theme.text === "#1D1A1A" ? "#0077AC" : "white")};
     background-color: ${({ theme }) => theme.background};
     padding: 10px;
+    text-decoration: none;
     margin-top: 50px;
     cursor: pointer;
     :hover {

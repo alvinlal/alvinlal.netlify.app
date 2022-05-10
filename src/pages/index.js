@@ -57,16 +57,31 @@ export default function Index() {
       wwwLight: file(relativePath: { eq: "wwwLight.svg" }) {
         publicURL
       }
-      phpLogo: file(relativePath: { eq: "php.svg" }) {
+      jsLogo: file(relativePath: { eq: "js.png" }) {
         publicURL
       }
-      jsLogo: file(relativePath: { eq: "js.png" }) {
+      awsLogo: file(relativePath: { eq: "aws.png" }) {
+        publicURL
+      }
+      serverlessFrameworkLogo: file(relativePath: { eq: "serverless.png" }) {
+        publicURL
+      }
+      githubLogo: file(relativePath: { eq: "github-dark.svg" }) {
+        publicURL
+      }
+      githubActionsLogo: file(relativePath: { eq: "github-actions.png" }) {
+        publicURL
+      }
+      phpLogo: file(relativePath: { eq: "php.svg" }) {
         publicURL
       }
       cppLogo: file(relativePath: { eq: "c++.png" }) {
         publicURL
       }
       dockerLogo: file(relativePath: { eq: "docker.png" }) {
+        publicURL
+      }
+      kuberLogo: file(relativePath: { eq: "k8s.png" }) {
         publicURL
       }
       nodeLogo: file(relativePath: { eq: "node.png" }) {
@@ -81,6 +96,9 @@ export default function Index() {
       graphqlLogo: file(relativePath: { eq: "graphql.svg" }) {
         publicURL
       }
+      nextjsLogo: file(relativePath: { eq: "nextjs.svg" }) {
+        publicURL
+      }
       mongoLogo: file(relativePath: { eq: "mongodb.png" }) {
         publicURL
       }
@@ -90,10 +108,16 @@ export default function Index() {
       cssLogo: file(relativePath: { eq: "css.png" }) {
         publicURL
       }
-      mongoLogo: file(relativePath: { eq: "mongodb.png" }) {
+      tailwindLogo: file(relativePath: { eq: "tailwind.png" }) {
         publicURL
       }
       mysqlLogo: file(relativePath: { eq: "mysql.png" }) {
+        publicURL
+      }
+      figmaLogo: file(relativePath: { eq: "figma.svg" }) {
+        publicURL
+      }
+      pwaLogo: file(relativePath: { eq: "pwa.svg" }) {
         publicURL
       }
       allMdx(sort: { fields: frontmatter___date, order: DESC }, limit: 4) {
@@ -151,12 +175,14 @@ export default function Index() {
               </p>
             </AboutWrapper>
 
-            <button
-              onClick={() => alert("resume is still work in progress")}
-              aria-label="download cv"
+            <a
+              href="https://docs.google.com/document/d/18jo_oy9gM0W5tR_yx-XxHzfF8EtVzwOWzOWJCeVzoFE/edit?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="resume"
             >
-              DOWNLOAD RESUME
-            </button>
+              RESUME
+            </a>
           </WhoamiWrapper>{" "}
           <DeveloperWrapper>
             <Fade bottom={true}>
@@ -175,57 +201,38 @@ export default function Index() {
           <h1>Skills</h1>
           <SkillsWrapper>
             <SkillWrapper>
-              <img src={data.phpLogo.publicURL} alt="php logo" />
-              <h1>Php</h1>
-              <p>
-                Php is a server side scripting language that is especially
-                suited to web development
-              </p>
-              <br></br>
-              <p>
-                projects :{" "}
-                <span>
-                  <a
-                    href="https://github.com/alvinlal/phpmvc"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Phpmvc
-                  </a>
-                </span>
-              </p>
-            </SkillWrapper>
-            <SkillWrapper>
               <img src={data.jsLogo.publicURL} alt="js logo" />
               <h1>Javascript</h1>
               <p>
                 Javascript is a client side scripting language with rich
                 frameworks and libraries
               </p>
-              <br></br>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.awsLogo.publicURL} alt="aws logo" />
+              <h1>AWS</h1>
               <p>
-                projects :{" "}
-                <span>
-                  <a
-                    href="https://github.com/alvinlal/alvinlal.netlify.app"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Portfolio Site
-                  </a>
-                </span>
+                Amazon Web Services (AWS) is one of the world's biggest cloud
+                provider
               </p>
             </SkillWrapper>
             <SkillWrapper>
               <img
-                className="cpp"
-                src={data.cppLogo.publicURL}
-                alt="c++ logo"
+                src={data.serverlessFrameworkLogo.publicURL}
+                alt="serverless framework logo"
               />
-              <h1>C++</h1>
+              <h1>Serverless Framework</h1>
               <p>
-                C++ is general purpose programming language that is used to make
-                high performing, mission critical apps
+                Serverless framework is a framework that lets you create
+                serverless architectures using infrastructure-as-code
+              </p>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.githubLogo.publicURL} alt="github logo" />
+              <h1>Git & Github</h1>
+              <p>
+                Git is a version control system and github is a Saas that takes
+                git to the cloud
               </p>
             </SkillWrapper>
             <SkillWrapper>
@@ -236,6 +243,14 @@ export default function Index() {
               />
               <h1>Docker</h1>
               <p>Docker is a containerisation tool that is used for devops</p>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.kuberLogo.publicURL} alt="kubernetes logo" />
+              <h1>Kubernetes</h1>
+              <p>
+                Kubernetes is a container orchestration tool built by google
+              </p>
+              <br></br>
             </SkillWrapper>
             <SkillWrapper>
               <img src={data.nodeLogo.publicURL} alt="nodejs logo" />
@@ -256,37 +271,38 @@ export default function Index() {
                 React is a javascript framework for building user interfaces by
                 facebook
               </p>
-              <br></br>
-              <p>
-                <span>
-                  <a
-                    href="https://github.com/alvinlal/alvinlal.netlify.app"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Portfolio Site
-                  </a>
-                </span>
-              </p>
             </SkillWrapper>
             <SkillWrapper>
               <img src={data.gatsbyLogo.publicURL} alt="gatsby logo" />
               <h1>Gatsby</h1>
               <p>Gatsby is a static site generator for react</p>
-              <br></br>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.nextjsLogo.publicURL} alt="nextjs logo" />
+              <h1>Next js</h1>
+              <p>Next js is a fullstack framework for react</p>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.phpLogo.publicURL} alt="php logo" />
+              <h1>Php</h1>
               <p>
-                projects :{" "}
-                <span>
-                  <a
-                    href="https://github.com/alvinlal/alvinlal.netlify.app"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Portfolio Site
-                  </a>
-                </span>
+                Php is a server side scripting language that is especially
+                suited to web development
               </p>
             </SkillWrapper>
+            <SkillWrapper>
+              <img
+                className="cpp"
+                src={data.cppLogo.publicURL}
+                alt="c++ logo"
+              />
+              <h1>C++</h1>
+              <p>
+                C++ is general purpose programming language that is used to make
+                performance critical apps
+              </p>
+            </SkillWrapper>
+
             <SkillWrapper>
               <img src={data.graphqlLogo.publicURL} alt="graphql logo" />
               <h1>Graphql</h1>
@@ -311,19 +327,6 @@ export default function Index() {
                 Html stands for hyper text markup language which is used for
                 creating webpages
               </p>
-              <br></br>
-              <p>
-                projects :{" "}
-                <span>
-                  <a
-                    href="https://github.com/alvinlal/alvinlal.netlify.app"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Portfolio Site
-                  </a>
-                </span>
-              </p>
             </SkillWrapper>
             <SkillWrapper>
               <img src={data.cssLogo.publicURL} alt="css logo" />
@@ -332,19 +335,11 @@ export default function Index() {
                 Css stands for cascading style sheets which is used for styling
                 web pages
               </p>
-              <br></br>
-              <p>
-                projects :{" "}
-                <span>
-                  <a
-                    href="https://github.com/alvinlal/alvinlal.netlify.app"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Portfolio Site
-                  </a>
-                </span>
-              </p>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.tailwindLogo.publicURL} alt="tailwind logo" />
+              <h1>Tailwind css</h1>
+              <p>Tailwind is a css framework</p>
             </SkillWrapper>
             <SkillWrapper>
               <img src={data.mysqlLogo.publicURL} alt="mysql logo" />
@@ -354,6 +349,26 @@ export default function Index() {
                 structured query language (SQL)
               </p>
               <br></br>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.figmaLogo.publicURL} alt="figma logo" />
+              <h1>Figma</h1>
+              <p>Figma is an UI/UX design tool</p>
+              <br></br>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img src={data.pwaLogo.publicURL} alt="pwa logo" />
+              <h1>PWA</h1>
+              <p>Progressive web apps</p>
+              <br></br>
+            </SkillWrapper>
+            <SkillWrapper>
+              <img
+                src={data.githubActionsLogo.publicURL}
+                alt="github Actions logo"
+              />
+              <h1>Github Actions</h1>
+              <p>Github Actions is an CI/CD tool that integrates with github</p>
             </SkillWrapper>
           </SkillsWrapper>
           <DownArrow />

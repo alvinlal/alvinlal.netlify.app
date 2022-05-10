@@ -48,17 +48,13 @@ export const Footer = () => {
           <img src={file.twitter.publicURL} alt="twitter logo" />
         </a>
         <a
-          href="https://www.linkedin.com/in/alvin-lal-146a841b8/"
+          href="https://www.linkedin.com/in/alvinlal7/"
           target="_blank"
           rel="noreferrer"
         >
           <img src={file.linkedin.publicURL} alt="linkedin logo" />
         </a>
-        <a
-          href="mailto:alvinzzz2001@gmail.com"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="mailto:alvinlal710@gmail.com" target="_blank" rel="noreferrer">
           <img src={file.gmail.publicURL} alt="gmail logo" />
         </a>
         <a href="/blog/rss.xml" target="_blank" rel="noreferrer">
