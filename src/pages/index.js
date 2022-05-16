@@ -146,7 +146,7 @@ export default function Index() {
     sameAs: [
       "https://www.instagram.com/alvin__lal/",
       "https://twitter.com/alvinlal7",
-      "https://www.linkedin.com/in/alvin-lal-146a841b8/",
+      "https://www.linkedin.com/in/alvinlal7/",
       "https://github.com/alvinlal",
     ],
     jobTitle: "student",
@@ -176,7 +176,7 @@ export default function Index() {
             </AboutWrapper>
 
             <a
-              href="https://docs.google.com/document/d/18jo_oy9gM0W5tR_yx-XxHzfF8EtVzwOWzOWJCeVzoFE/edit?usp=sharing"
+              href="https://drive.google.com/file/d/1YhCg-F8EpKVroG2hQLE6bj95VGfmMo9W/view?usp=sharing"
               target="_blank"
               rel="noreferrer"
               aria-label="resume"
