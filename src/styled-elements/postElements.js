@@ -139,11 +139,7 @@ export const PostbodyWrapper = styled.div`
     h2 {
       font-size: 1.2rem;
     }
-    p {
-      font-size: 1rem;
-      line-height: 1.4rem;
-      /* word-break: break-all; */
-    }
+
     pre {
       font-size: 1rem;
     }
