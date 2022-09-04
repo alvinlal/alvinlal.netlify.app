@@ -448,13 +448,11 @@ function isPrime(number) {
 
 ## Caveats
 
-1. Only parent to child process communication is possible and there is no child to child communication.
-2. Separate memory is allocated for each child process which means that there is a time and resource overhead.
+1. Separate memory is allocated for each child process which means that there is a time and resource overhead.
 
 # Worker threads
 
-Worker threads can be used to solve the above-mentioned caveats with child processes because
-worker threads share memory and communication between threads is possible. Essentially the
+Essentially the
 difference between worker threads and child processes is same as the difference between
 a thread and a process.Ideally, the number of threads created should be equal to number of cpu cores.
 
